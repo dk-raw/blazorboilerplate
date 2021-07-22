@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject IStringLocalizer<Global> L
+@inject ISnackbar Snackbar
 
 <h1><img src="_content/BlazorBoilerplate.Theme.Material/images/logo-title.png" alt="Loading" title="BlazorBoilerplate" style="max-width: 100%;" /></h1>
 
@@ -48,7 +49,7 @@
         <li><i class="fa fa-check"></i> Responsive Admin Theme - [Blazor Sidebar Navigation Menu]</li>
         <li><i class="fa fa-check"></i> Loading Screen</li>
         <li><i class="fa fa-check"></i> <a href="/swagger/index.html" target="_blank">Swagger Ui API visualizer</a></li>
-        <li><i class="fa fa-check"></i> Material Design / MatBlazor Components</li>
+        <li><i class="fa fa-check"></i> Material Design / MudBlazor Components</li>
         <li><i class="fa fa-check"></i> Basic Account Creation, Login, Forgot Password</li>
         <li><i class="fa fa-check"></i> MailKit SMTP Email</li>
         <li><i class="fa fa-check"></i> Response Middleware for Consistent API Responses and Error Handling with Toasts</li>
@@ -69,9 +70,6 @@
         <li>Tests</li>
     </ul>
 </p>
-<p>
-    This project was initially derived from <a href="https://github.com/stavroskasidis/BlazorWithIdentity" target="_blank">https://github.com/stavroskasidis/BlazorWithIdentity</a> and utilizes <a href="https://www.matblazor.com/" target="_blank">MatBlazor</a> extensively.
-</p>
 <hr />
 <h3> Disclaimer / About the Author</h3>
 <p>
@@ -89,15 +87,7 @@
     .Net WebForms project. Please take the time to Star, Contribute or Donate to support my efforts to continue to drive the project, especially if you use it in production.
 </p>
 
-<MatSnackbar @bind-IsVisible="@lazySnackbarIsOpen">
-    <MatSnackbarContent>If you like BlazorBoilerplate, please put a <a href="https://github.com/enkodellc/blazorboilerplate" target="_blank">star on GitHub</a>.</MatSnackbarContent>
-    <MatSnackbarActions>
-        <MudIconButton Icon="@Icons.Filled.Stars" Link="https://github.com/enkodellc/blazorboilerplate" style="color: white !important;" target="_blank"></MudIconButton>
-    </MatSnackbarActions>
-</MatSnackbar>
-
 @code{
-    bool lazySnackbarIsOpen = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -105,7 +95,20 @@
 
         await Task.Delay(TimeSpan.FromSeconds(3)).ContinueWith((_) =>
         {
-            this.lazySnackbarIsOpen = true;
+            Snackbar.Add(
+                "If you like BlazorBoilerplate, please put a <a href=\"https://github.com/enkodellc/blazorboilerplate\" target=\"_blank\">star on GitHub</a>.",
+                Severity.Info,
+                config =>
+            {
+                config.Icon = Icons.Custom.Brands.GitHub;
+                config.RequireInteraction = true;
+                config.ShowCloseIcon = false;
+                config.Onclick = snackbar =>
+                {
+
+                    return Task.CompletedTask;
+                };
+            });
         });
     }
 }

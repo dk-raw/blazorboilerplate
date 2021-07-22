@@ -78,12 +78,18 @@ else
     <MudButton OnClick="@CancelChanges" Raised="true">@L["Cancel"]</MudButton>
     <MudButton OnClick="@SaveChanges" Raised="true">@L["Save"]</MudButton>
     <MudButton OnClick="@ReloadTranslations" Raised="true">@L["ReloadTranslations"]</MudButton>
-    @*Hack. See https://github.com/SamProf/MatBlazor/issues/713*@
     <div>
         <MudButton Style="margin-top: 5px" OnClick="@(e => { navigationManager.NavigateTo("/api/localization/export", true); })" Raised="true">@L["Export"]</MudButton>
-        @*<MudButton Link="/api/localization/export" Raised="true">@L["Export"]</MudButton>*@
 
-        <MatFileUpload OnChange="@UploadMat" Label="@L["Import PO file"]"></MatFileUpload>
+        <InputFile id="fileInput" OnChange="UploadFiles" hidden multiple />
+
+        <MudButton HtmlTag="label"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   StartIcon="@Icons.Filled.CloudUpload"
+                   for="fileInput">
+            @L["Import PO file"]
+        </MudButton>
     </div>
 
     <MudDialog @bind-IsVisible="@isEditDialogOpen">
@@ -233,8 +239,8 @@ else
 
     protected override Task<string> GetHTML() => HtmlEditor.GetHTML();
 
-    async Task UploadMat(IMatFileUploadEntry[] files)
+    private async Task UploadFiles(InputFileChangeEventArgs e)
     {
-        await Upload(files.Select(e => new FileUploadEntry(e)));
+        await Upload(e.GetMultipleFiles().Select(e => new FileUploadEntry(e)));
     }
 }
