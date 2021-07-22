@@ -67,7 +67,7 @@ else
             <ValidationSummary />
             <fieldset>
                 <div class="form-group">
-                    <MatSelectItem @bind-Value="@newLocalizationRecord.Culture" Items="@LocalizationCultures" Label=@L["Culture"]></MatSelectItem>
+                    <MudSelect @bind-Value="@newLocalizationRecord.Culture" Items="@LocalizationCultures" Label=@L["Culture"]></MudSelect>
                     <MudTextField @bind-Value="@newLocalizationRecord.Translation" Label=@L["Translation"] FullWidth="true" TextArea="true" Style="resize: both"></MudTextField>
                     <MudButton Type="submit" Raised="true">@L["Add"]</MudButton>
                     <MudButton Raised="true" OnClick="@(() => OpenEditAsHtmlDialog(newLocalizationRecord))">@L["Edit as HTML"]</MudButton>

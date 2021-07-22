@@ -37,7 +37,7 @@ else
             <ValidationSummary />
             <fieldset>
                 <div class="form-group">
-                    <MatSelectItem @bind-Value="@newPluralFormRule.Language" Items="@LocalizationCultures" Label=@L["Culture"]></MatSelectItem>
+                    <MudSelect @bind-Value="@newPluralFormRule.Language" Items="@LocalizationCultures" Label=@L["Culture"]></MudSelect>
                     <MudTextField @bind-Value="@newPluralFormRule.Count" Label=@L["Count"] FullWidth="true" Required="true"></MudTextField>
                     <MudTextField @bind-Value="@newPluralFormRule.Selector" Label=@L["Selector"] FullWidth="true" Required="true"></MudTextField>
                     <MudButton Type="submit" Raised="true">@L["Add"]</MudButton>

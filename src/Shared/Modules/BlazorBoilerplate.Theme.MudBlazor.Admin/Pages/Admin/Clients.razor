@@ -42,7 +42,7 @@ else
                 </div>
             </td>
             <td><div style="min-width:130px;">@ClientRow.ClientId</div></td>
-            <td><MudSwitch @bind-Checked="@ClientRow.Enabled" ValueChanged="@((item) => UpdateEnabled(ClientRow))"></MudSwitch></td>
+            <td><MudSwitch Checked="@ClientRow.Enabled" CheckedChanged="@((bool i) => UpdateEnabled(ClientRow))"></MudSwitch></td>
             <td><div style="min-width:130px;">@ClientRow.AccessTokenLifetime</div></td>
             <td><MudSwitch @bind-Checked="@ClientRow.RequireClientSecret" Disabled="true"></MudSwitch></td>
             <td><MudSwitch @bind-Checked="@ClientRow.RequireConsent" Disabled="true"></MudSwitch></td>
@@ -208,16 +208,16 @@ else
                             <MudTextField @bind-Value="@currentClient.SlidingRefreshTokenLifetime" Label="Sliding lifetime of a refresh token in seconds" Icon="timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MatSelectItem @bind-Value="@currentClient.RefreshTokenUsage" Items="@TokenUsages" Label="Refresh Token Usage"></MatSelectItem>
+                            <MudSelect @bind-Value="@currentClient.RefreshTokenUsage" Items="@TokenUsages" Label="Refresh Token Usage"></MudSelect>
                         </div>
                         <div class="form-group">
-                            <MatSelectItem @bind-Value="@currentClient.RefreshTokenExpiration" Items="@RefreshTokenExpirations" Label="Refresh Token Expiration"></MatSelectItem>
+                            <MudSelect @bind-Value="@currentClient.RefreshTokenExpiration" Items="@RefreshTokenExpirations" Label="Refresh Token Expiration"></MudSelect>
                         </div>
                         <div class="form-group">
                             <MudSwitch @bind-Checked="@currentClient.UpdateAccessTokenClaimsOnRefresh" Label="Update Access Token Claims on refresh"></MudSwitch>
                         </div>
                         <div class="form-group">
-                            <MatSelectItem @bind-Value="@currentClient.AccessTokenType" Items="@AccessTokenTypes" Label="Access Token Type"></MatSelectItem>
+                            <MudSelect @bind-Value="@currentClient.AccessTokenType" Items="@AccessTokenTypes" Label="Access Token Type"></MudSelect>
                         </div>
                         <div class="form-group">
                             <MudSwitch @bind-Checked="@currentClient.IncludeJwtId" Label="Include Jwt Id"></MudSwitch>
@@ -307,12 +307,12 @@ else
                 <div class="form-group">
                     <MudTextField @bind-Value="@currentSecret.Value" Label="Secret" Icon="lock_outline" Adornment="Adornment.End" Required="true"></MudTextField>
                     <MudIconButton OnClick="@GenerateSecret" Icon="refresh"></MudIconButton>
-                    @*https://github.com/SamProf/MatBlazor/issues/303
-                        <MudTooltip Text="You have to copy the secret now, because it cannot be retrieved anymore."></MudTooltip>*@
-                    <MudIconButton Icon="info"></MudIconButton>
+                    <MudTooltip Text="You have to copy the secret now, because it cannot be retrieved anymore.">
+                        <MudIconButton Icon="info"></MudIconButton>
+                    </MudTooltip>
                 </div>
                 <div class="form-group">
-                    <MatDatePicker @bind-Value="@currentSecret.Expiration" Label="Expiration" FullWidth="true" Minimum="@DateTime.Now"></MatDatePicker>
+                    <MudDatePicker @bind-Date="@currentSecret.Expiration" Label="Expiration" FullWidth="true" Minimum="@DateTime.Now"></MudDatePicker>
                 </div>
             </fieldset>
         </EditForm>

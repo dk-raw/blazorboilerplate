@@ -24,10 +24,12 @@
 }
 else
 {
-    <MatSelectValue Value="DebugLevel" Items="@DebugLevels"
-                    ValueSelector=@(i => i)
-                    ValueChanged="(string i) => LoadData(i)">
-    </MatSelectValue>
+<MudSelect Value="DebugLevel" ValueChanged="(string i) => LoadData(i)">
+    @foreach (var item in DebugLevels)
+    {
+        <MudSelectItem Value="@item">@item</MudSelectItem>
+    }
+</MudSelect>
     <MudTable Items="@dbLogItems" Class="mat-elevation-z5" Striped="true" PageSize="@pageSize" ShowPaging="false">
         <HeaderContent>
             <th>Timestamp</th>

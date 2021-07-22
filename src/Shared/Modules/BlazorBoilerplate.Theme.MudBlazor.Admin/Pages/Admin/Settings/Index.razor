@@ -24,7 +24,7 @@ else
         <ValidationSummary />
         <fieldset>
             <div class="form-group">
-                <MatSelectItem @bind-Value="@settings[SettingKey.MainConfiguration_Runtime].Value" Items="@BlazorRuntimes" Label="@L["Blazor Runtime"]"></MatSelectItem>
+                <MudSelect @bind-Value="@settings[SettingKey.MainConfiguration_Runtime].Value" Items="@BlazorRuntimes" Label="@L["Blazor Runtime"]"></MudSelect>
             </div>
         </fieldset>
     </EditForm>
