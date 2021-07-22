@@ -10,7 +10,7 @@
     </Breadcrumbs>
 </TopSection>
 
-<MatH4>@L["EmailSettings"]</MatH4>
+<h4>@L["EmailSettings"]</h4>
 
 @if (settings == null)
 {
@@ -24,7 +24,7 @@ else
         <FluentValidationValidator />
         <ValidationSummary />
         <fieldset>
-            <MatH5>@L["OutgoingEmail"]</MatH5>
+            <h5>@L["OutgoingEmail"]</h5>
             <div class="form-group">
                 <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_FromAddress].Value" Label="@L["SenderEmail"]" Icon="alternate_email" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
@@ -51,8 +51,8 @@ else
                 <MatSelectItem @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpSslProtocol].Value" Items="@sslProtocols" Label="SSL Protocol"></MatSelectItem>
             </div>}
             <MudDivider />
-            <MatH5>@L["IncomingEmail"]</MatH5>
-            <MatH5>POP3</MatH5>
+            <h5>@L["IncomingEmail"]</h5>
+            <h5>POP3</h5>
             <div class="form-group">
                 <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopServer].Value" Label="@L["PopServer"]" Icon="dns" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
@@ -69,7 +69,7 @@ else
                 <MudSwitch @bind-Checked="@settings[SettingKey.EmailConfiguration_PopUseSSL].ValueAsBool" Label="SSL"></MudSwitch>
             </div>
             <MudDivider />
-            <MatH5>IMAP</MatH5>
+            <h5>IMAP</h5>
             <div class="form-group">
                 <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapServer].Value" Label="@L["ImapServer"]" Icon="dns" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
