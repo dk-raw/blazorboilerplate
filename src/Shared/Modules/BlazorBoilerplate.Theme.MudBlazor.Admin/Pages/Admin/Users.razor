@@ -20,12 +20,13 @@
 }
 else
 {
-    <MudTable Items="@users" Class="mat-elevation-z5" Striped="true" PageSize="@pageSize" ShowPaging="false">
+    <MudTable Striped="true" ServerData="@(new Func<TableState, Task<TableData<ApplicationUser>>>(ServerReload))"
+              Dense="true" Hover="true">
         <HeaderContent>
-            <th><MudButton Icon="person_add" Label=@L["New User"] OnClick="@(e => { createUserDialogOpen = true; })"></MudButton></th>
-            <th>@L["UserName"]</th>
-            <th>@L["Email"]</th>
-            <th>@L["Roles"]</th>
+            <MudTh><MudButton Icon="person_add" Label=@L["New User"] OnClick="@(e => { createUserDialogOpen = true; })"></MudButton></MudTh>
+            <MudTh>@L["UserName"]</MudTh>
+            <MudTh>@L["Email"]</MudTh>
+            <MudTh>@L["Roles"]</MudTh>
         </HeaderContent>
         <RowTemplate Context="UserRow">
             <td>
@@ -146,5 +147,10 @@ else
 </MudDialog>
 
 @code {
+    private async Task<TableData<ApplicationUser>> ServerReload(TableState state)
+    {
+        await OnPage(state.Page, state.PageSize);
 
+        return new TableData<ApplicationUser>() { TotalItems = totalItemsCount, Items = users };
+    }
 }
