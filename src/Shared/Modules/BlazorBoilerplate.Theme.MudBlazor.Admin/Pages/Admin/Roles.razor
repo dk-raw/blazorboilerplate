@@ -22,7 +22,7 @@ else
 {
     <MudTable Class="mat-elevation-z5" Items="@roles" Striped="true" PageSize="@pageSize" ShowPaging="false">
         <HeaderContent>
-            <th><MudButton Icon="add" Label=@L["New Role"] OnClick="@(() => OpenUpsertRoleDialog())"></MudButton></th>
+            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["New Role"] OnClick="@(() => OpenUpsertRoleDialog())"></MudButton></th>
             <th>@L["Name"]</th>
             <th>@L["Permissions"]</th>
         </HeaderContent>
@@ -53,7 +53,7 @@ else
     <DialogContent>
         <fieldset>
             <div class="form-group">
-                <MudTextField @bind-Value="@currentRoleName" Disabled="@isCurrentRoleReadOnly" Label="Role Name" Icon="add" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@currentRoleName" Disabled="@isCurrentRoleReadOnly" Label="Role Name" Icon="@Icons.Filled.Add" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
         </fieldset>
         <MudTable Items="@permissionsSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">

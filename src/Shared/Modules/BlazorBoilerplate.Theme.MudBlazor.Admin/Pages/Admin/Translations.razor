@@ -19,7 +19,7 @@ else
     <MudTable Items="@localizationRecordKeys" Class="mat-elevation-z5" Striped="true" PageSize="@pageSize" ShowPaging="false"
               AllowSelection="true" SelectionChanged="async (object key) => await LoadLocalizationRecords((LocalizationRecordKey)key)">
         <HeaderContent>
-            <th><MudButton Icon="add" Label=@L["NewTranslation"] OnClick="@OpenNewKeyDialogOpen"></MudButton></th>
+            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["NewTranslation"] OnClick="@OpenNewKeyDialogOpen"></MudButton></th>
             <th>@L["MsgId"]</th>
             <th>@L["ContextId"]</th>
         </HeaderContent>
@@ -135,7 +135,7 @@ else
                         <MudTextField @bind-Value="@newLocalizationRecord.MsgId" Label=@L["MsgId"] Icon="vpn_key" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                     </div>
                     <div class="form-group">
-                        <MudTextField @bind-Value="@newLocalizationRecord.Culture" Label=@L["Culture"] Icon="public" Adornment="Adornment.End" FullWidth="true" Required="true" Disabled="true"></MudTextField>
+                        <MudTextField @bind-Value="@newLocalizationRecord.Culture" Label=@L["Culture"] Icon="@Icons.Filled.Public" Adornment="Adornment.End" FullWidth="true" Required="true" Disabled="true"></MudTextField>
                     </div>
                     <div class="form-group">
                         <MudTextField @bind-Value="@newLocalizationRecord.Translation" Label=@L["Translation"] FullWidth="true" Required="true" TextArea="true" Style="resize: both"></MudTextField>

@@ -23,7 +23,7 @@ else
 {
     <MudTable Class="mat-elevation-z5" Items="@clients" Striped="true">
         <HeaderContent>
-            <th><MudButton Icon="add" Label=@L["New Client"] OnClick="@(() => OpenUpsertClientDialog())"></MudButton></th>
+            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["New Client"] OnClick="@(() => OpenUpsertClientDialog())"></MudButton></th>
             <th>Id</th>
             <th>Enabled</th>
             <th>Access Token Lifetime</th>
@@ -80,21 +80,21 @@ else
                 <MudTabPanel Text="Main">
                     <fieldset>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.ClientId" Disabled="@isCurrentClientKeyReadOnly" Label="Id" Icon="description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.ClientId" Disabled="@isCurrentClientKeyReadOnly" Label="Id" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
                             <MudSwitch @bind-Checked="@currentClient.Enabled" Label="Enabled"></MudSwitch>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.Description" Label="Description" Icon="description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.Description" Label="Description" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
                         </div>
                         <MudDivider />
                         <h3 class="mat-subtitle1">Device Flow</h3>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.DeviceCodeLifetime" Label="Device Code Lifetime in seconds" Icon="timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.DeviceCodeLifetime" Label="Device Code Lifetime in seconds" Icon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.UserCodeType" Label="User Code Type" Icon="description" Adornment="Adornment.End" FullWidth="true" Required="false"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.UserCodeType" Label="User Code Type" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="false"></MudTextField>
                         </div>
                     </fieldset>
                 </MudTabPanel>
@@ -106,7 +106,7 @@ else
                     </fieldset>
                     <MudTable Items="@currentClient.ClientSecrets" Class="mat-elevation-z5" ShowPaging="false" PageSize="@int.MaxValue" style="@(currentClient.RequireClientSecret ? "" : "display:none;")">
                         <HeaderContent>
-                            <th style="min-width:190px;"><MudButton Icon="add" Label="New Secret" OnClick="@(() => OpenCreateClientSecretDialogOpen())"></MudButton></th>
+                            <th style="min-width:190px;"><MudButton Icon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateClientSecretDialogOpen())"></MudButton></th>
                             <th>Expiration</th>
                             <th>Description</th>
                         </HeaderContent>
@@ -180,7 +180,7 @@ else
                             <MudTextField @bind-Value="@currentClient.IdentityProviderRestrictionsText" Label="Identity Provider Restrictions" Icon="@Icons.Filled.Link" Adornment="Adornment.End" TextArea="true" FullWidth="true" Required="false"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.UserSsoLifetime" Label="User Sso Lifetime  in seconds" Icon="timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.UserSsoLifetime" Label="User Sso Lifetime  in seconds" Icon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                     </fieldset>
                 </MudTabPanel>
@@ -190,22 +190,22 @@ else
                             <MudSwitch @bind-Checked="@currentClient.AllowOfflineAccess" Label="Allow Offline Access (client can request refresh tokens)"></MudSwitch>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.IdentityTokenLifetime" Label="Identity Token Lifetime in seconds" Icon="timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.IdentityTokenLifetime" Label="Identity Token Lifetime in seconds" Icon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.AccessTokenLifetime" Label="Access Token Lifetime in seconds" Icon="timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.AccessTokenLifetime" Label="Access Token Lifetime in seconds" Icon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
                             <MudSwitch @bind-Checked="@currentClient.AllowAccessTokensViaBrowser" Label="Allow Access Tokens Via Browser"></MudSwitch>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.AuthorizationCodeLifetime" Label="Authorization Code Lifetime in seconds" Icon="timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.AuthorizationCodeLifetime" Label="Authorization Code Lifetime in seconds" Icon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.AbsoluteRefreshTokenLifetime" Label="Maximum lifetime of a refresh token in seconds" Icon="timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.AbsoluteRefreshTokenLifetime" Label="Maximum lifetime of a refresh token in seconds" Icon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.SlidingRefreshTokenLifetime" Label="Sliding lifetime of a refresh token in seconds" Icon="timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.SlidingRefreshTokenLifetime" Label="Sliding lifetime of a refresh token in seconds" Icon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
                             <MudSelect @bind-Value="@currentClient.RefreshTokenUsage" Items="@TokenUsages" Label="Refresh Token Usage"></MudSelect>
@@ -250,10 +250,10 @@ else
                             <MudSwitch @bind-Checked="@currentClient.AllowRememberConsent" Label="Allow Remember Consent"></MudSwitch>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.ConsentLifetime" Label="Consent Lifetime in seconds" Icon="timer" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.ConsentLifetime" Label="Consent Lifetime in seconds" Icon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.ClientName" Label="Client display name" Icon="description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.ClientName" Label="Client display name" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
                         </div>
                         <div class="form-group">
                             <MudTextField @bind-Value="@currentClient.ClientUri" Label="Client Uri" Icon="@Icons.Filled.Link" Adornment="Adornment.End" FullWidth="true"></MudTextField>
@@ -302,10 +302,10 @@ else
             <ValidationSummary />
             <fieldset>
                 <div class="form-group">
-                    <MudTextField @bind-Value="@currentSecret.Description" Label="Description" Icon="description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+                    <MudTextField @bind-Value="@currentSecret.Description" Label="Description" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
                 </div>
                 <div class="form-group">
-                    <MudTextField @bind-Value="@currentSecret.Value" Label="Secret" Icon="lock_outline" Adornment="Adornment.End" Required="true"></MudTextField>
+                    <MudTextField @bind-Value="@currentSecret.Value" Label="Secret" Icon="@Icons.Filled.LockOutline" Adornment="Adornment.End" Required="true"></MudTextField>
                     <MudIconButton OnClick="@GenerateSecret" Icon="refresh"></MudIconButton>
                     <MudTooltip Text="You have to copy the secret now, because it cannot be retrieved anymore.">
                         <MudIconButton Icon="info"></MudIconButton>

@@ -24,7 +24,7 @@ else
 {
     <MudTable Class="mat-elevation-z5" Items="@apiResources" Striped="true">
         <HeaderContent>
-            <th><MudButton Icon="add" Label=@L["New API Resource"] OnClick="@(() => OpenUpsertApiResourceDialog())"></MudButton></th>
+            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["New API Resource"] OnClick="@(() => OpenUpsertApiResourceDialog())"></MudButton></th>
             <th>@L["Name"]</th>
             <th>Enabled</th>
             <th>Display Name</th>
@@ -75,16 +75,16 @@ else
                 <MudTabPanel Text="Main">
                     <fieldset>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentApiResource.Name" Disabled="@isCurrentApiContextIdReadOnly" Label="Id" Icon="description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentApiResource.Name" Disabled="@isCurrentApiContextIdReadOnly" Label="Id" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
                             <MudSwitch @bind-Checked="@currentApiResource.Enabled" Label="Enabled"></MudSwitch>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentApiResource.DisplayName" Label="Display Name" Icon="description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentApiResource.DisplayName" Label="Display Name" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentApiResource.Description" Label="Description" Icon="description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentApiResource.Description" Label="Description" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
                         </div>
                         <div class="form-group">
                             <div class="form-group">
@@ -107,7 +107,7 @@ else
                 <MudTabPanel Text="Secrets">
                     <MudTable Items="@currentApiResource.ApiSecrets" Class="mat-elevation-z5" ShowPaging="false" PageSize="@int.MaxValue">
                         <HeaderContent>
-                            <th style="min-width:190px;"><MudButton Icon="add" Label="New Secret" OnClick="@(() => OpenCreateApiResourceSecretDialogOpen())"></MudButton></th>
+                            <th style="min-width:190px;"><MudButton Icon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateApiResourceSecretDialogOpen())"></MudButton></th>
                             <th>Expiration</th>
                             <th>Description</th>
                         </HeaderContent>
@@ -180,14 +180,14 @@ else
             <ValidationSummary />
             <fieldset>
                 <div class="form-group">
-                    <MudTextField @bind-Value="@currentSecret.Description" Label="Description" Icon="description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+                    <MudTextField @bind-Value="@currentSecret.Description" Label="Description" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
                 </div>
                 <div class="form-group">
-                    <MudTextField @bind-Value="@currentSecret.Value" Label="Secret" Icon="lock_outline" Adornment="Adornment.End" Required="true"></MudTextField>
-                    <MudIconButton OnClick="@GenerateSecret" Icon="refresh"></MudIconButton>
-                    @*https://github.com/SamProf/MatBlazor/issues/303
-                        <MudTooltip Text="You have to copy the secret now, because it cannot be retrieved anymore."></MudTooltip>*@
-                    <MudIconButton Icon="info"></MudIconButton>
+                    <MudTextField @bind-Value="@currentSecret.Value" Label="Secret" Icon="@Icons.Filled.LockOutline" Adornment="Adornment.End" Required="true"></MudTextField>
+                    <MudIconButton OnClick="@GenerateSecret" Icon="@Icons.Filled.Refresh"></MudIconButton>
+                    <MudTooltip Text="You have to copy the secret now, because it cannot be retrieved anymore.">
+                        <MudIconButton Icon="@Icons.Filled.Info"></MudIconButton>
+                    </MudTooltip>
                 </div>
                 <div class="form-group">
                     <MudDatePicker @bind-Date="@currentSecret.Expiration" Label="Expiration" FullWidth="true" Minimum="@DateTime.Now"></MudDatePicker>
