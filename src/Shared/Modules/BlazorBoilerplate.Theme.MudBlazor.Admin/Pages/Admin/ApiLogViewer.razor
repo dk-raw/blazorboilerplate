@@ -27,31 +27,36 @@
 }
 else
 {
-<MudTable Items="@apiLogItems" Class="mat-elevation-z5" Striped="true" PageSize="@pageSize" ShowPaging="false">
-    <HeaderContent>
-        <th><div style="width:175px;"><MudFab Icon="@Icons.Filled.Refresh" OnClick="@(() => LoadData())" Raised="true" Mini="true" Style="margin-right:16px;"></MudFab> Date / Time</div></th>
-        <th>Http Code</th>
-        <th>IP Address</th>
-        <th>Method</th>
-        <th>Response Time</th>
-        <th><div style="width:175px;">UserId</div></th>
-        <th>Path</th>
-    </HeaderContent>
-    <RowTemplate>
-        <td>@context.RequestTime</td>
-        <td>@context.StatusCode</td>
-        <td><span style="font-size:small">@context.IPAddress</span></td>
-        <td>@context.Method</td>
-        <td>@context.ResponseMillis</td>
-        <td>@context.ApplicationUserId</td>
-        <td>@context.Path</td>
-    </RowTemplate>
-    <PagerContent>
-        <MudTablePager />
-    </PagerContent>
-</MudTable>
+    <MudTable ServerData="@(new Func<TableState, Task<TableData<ApiLogItem>>>(ServerReload))" Striped="true" Dense="true" Hover="true">
+        <HeaderContent>
+            <th><div style="width:175px;"><MudFab Icon="@Icons.Filled.Refresh" OnClick="@(() => LoadData())" Raised="true" Mini="true" Style="margin-right:16px;"></MudFab> Date / Time</div></th>
+            <th>Http Code</th>
+            <th>IP Address</th>
+            <th>Method</th>
+            <th>Response Time</th>
+            <th><div style="width:175px;">UserId</div></th>
+            <th>Path</th>
+        </HeaderContent>
+        <RowTemplate>
+            <td>@context.RequestTime</td>
+            <td>@context.StatusCode</td>
+            <td><span style="font-size:small">@context.IPAddress</span></td>
+            <td>@context.Method</td>
+            <td>@context.ResponseMillis</td>
+            <td>@context.ApplicationUserId</td>
+            <td>@context.Path</td>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
 }
 
-
 @code {
+    private async Task<TableData<ApiLogItem>> ServerReload(TableState state)
+    {
+        await OnPage(state.Page, state.PageSize);
+
+        return new TableData<ApiLogItem>() { TotalItems = totalItemsCount, Items = apiLogItems };
+    }
 }

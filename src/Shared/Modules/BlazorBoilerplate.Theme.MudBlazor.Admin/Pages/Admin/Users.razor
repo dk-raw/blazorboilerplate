@@ -20,8 +20,7 @@
 }
 else
 {
-    <MudTable Striped="true" ServerData="@(new Func<TableState, Task<TableData<ApplicationUser>>>(ServerReload))"
-              Dense="true" Hover="true">
+    <MudTable ServerData="@(new Func<TableState, Task<TableData<ApplicationUser>>>(ServerReload))" Striped="true" Dense="true" Hover="true">
         <HeaderContent>
             <MudTh><MudButton Icon="@Icons.Filled.PersonAdd" Label=@L["New User"] OnClick="@(e => { createUserDialogOpen = true; })"></MudButton></MudTh>
             <MudTh>@L["UserName"]</MudTh>
