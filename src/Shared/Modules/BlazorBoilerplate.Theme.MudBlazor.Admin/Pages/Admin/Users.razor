@@ -38,7 +38,7 @@ else
             <td><div style="width:130px;">@UserRow.UserName</div></td>
             <td style="white-space: nowrap">
                 @UserRow.Email @if (UserRow.EmailConfirmed)
-                {<MudIcon Style="vertical-align: text-bottom" Icon="check_circle"></MudIcon>}
+                    {<MudIcon Style="vertical-align: text-bottom" Icon="check_circle"></MudIcon>}
             </td>
             <td>
                 @if (@UserRow.UserRoles != null)
@@ -50,8 +50,10 @@ else
                     </MudChipSet>}
             </td>
         </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
     </MudTable>
-    <MudTablePager PageSize="@pageSize" Page="@(async e => await OnPage(e.PageIndex, e.PageSize))" Length="@totalItemsCount" Style="background: transparent"></MudTablePager>
 }
 
 <MudDialog @bind-IsVisible="@createUserDialogOpen">

@@ -40,7 +40,7 @@ else
                 </div>
             </td>
             <td><div style="min-width:130px;">@ApiResourceRow.Name</div></td>
-            <td><MudSwitch @bind-Checked="@ApiResourceRow.Enabled" ValueChanged="@((item) => UpdateEnabled(ApiResourceRow))"></MudSwitch></td>
+            <td><MudSwitch Checked="@ApiResourceRow.Enabled" CheckedChanged="@((bool item) => UpdateEnabled(ApiResourceRow))"></MudSwitch></td>
             <td><div style="min-width:130px;">@ApiResourceRow.DisplayName</div></td>
             <td><div style="min-width:130px;">@ApiResourceRow.Description</div></td>
             <td>

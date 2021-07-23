@@ -41,7 +41,7 @@ else
                 </div>
             </td>
             <td><div style="min-width:130px;">@IdentityResourceRow.Name</div></td>
-            <td><MudSwitch @bind-Checked="@IdentityResourceRow.Enabled" ValueChanged="@((item) => UpdateEnabled(IdentityResourceRow))"></MudSwitch></td>
+            <td><MudSwitch Checked="@IdentityResourceRow.Enabled" CheckedChanged="@((bool item) => UpdateEnabled(IdentityResourceRow))"></MudSwitch></td>
             <td><div style="min-width:130px;">@IdentityResourceRow.DisplayName</div></td>
             <td><div style="min-width:130px;">@IdentityResourceRow.Description</div></td>
             <td><MudSwitch @bind-Checked="@IdentityResourceRow.Required" Disabled="true"></MudSwitch></td>
