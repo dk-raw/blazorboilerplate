@@ -23,21 +23,21 @@ else
 {
     <MudTable Class="mat-elevation-z5" Items="@tenants" Striped="true">
         <HeaderContent>
-            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["New Tenant"] OnClick="@(() => OpenUpsertTenantDialog())"></MudButton></th>
-            <th>Id</th>
-            <th>Identifier</th>
-            <th>@L["Name"]</th>
-            <th>ConnectionString</th>
+            <MudTh><MudButton Icon="@Icons.Filled.Add" Label=@L["New Tenant"] OnClick="@(() => OpenUpsertTenantDialog())"></MudButton></MudTh>
+            <MudTh>Id</MudTh>
+            <MudTh>Identifier</MudTh>
+            <MudTh>@L["Name"]</MudTh>
+            <MudTh>ConnectionString</MudTh>
         </HeaderContent>
         <RowTemplate Context="TenantRow">
-            <td>
+            <MudTd>
                 <div style="width:155px;">
                     <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenUpsertTenantDialog(TenantRow))"></MudIconButton>
                     <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteTenantDialog(TenantRow))" Disabled="@(TenantRow.Id == BlazorBoilerplate.Constants.Settings.DefaultTenantId)"></MudIconButton>
                 </div>
-            </td>
-            <td><div style="min-width:130px;">@TenantRow.Id</div></td>
-            <td>
+            </MudTd>
+            <MudTd><div style="min-width:130px;">@TenantRow.Id</div></MudTd>
+            <MudTd>
                 <div style="min-width:130px; white-space:nowrap;">
                     @TenantRow.Identifier
                     @if (TenantRow.Id != BlazorBoilerplate.Constants.Settings.DefaultTenantId)
@@ -45,9 +45,9 @@ else
                         <MudIconButton Link="@GetTenantUri(TenantRow)" Target="_blank" Icon="@Icons.Filled.Link" />
                         }
                 </div>
-            </td>
-            <td><div style="min-width:130px;">@TenantRow.Name</div></td>
-            <td><div style="min-width:130px;">@TenantRow.ConnectionString</div></td>
+            </MudTd>
+            <MudTd><div style="min-width:130px;">@TenantRow.Name</div></MudTd>
+            <MudTd><div style="min-width:130px;">@TenantRow.ConnectionString</div></MudTd>
         </RowTemplate>
     </MudTable>
 }

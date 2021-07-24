@@ -29,22 +29,22 @@ else
 {
     <MudTable ServerData="@(new Func<TableState, Task<TableData<ApiLogItem>>>(ServerReload))" Striped="true" Dense="true" Hover="true">
         <HeaderContent>
-            <th><div style="width:175px;"><MudFab Icon="@Icons.Filled.Refresh" OnClick="@(() => LoadData())" Raised="true" Mini="true" Style="margin-right:16px;"></MudFab> Date / Time</div></th>
-            <th>Http Code</th>
-            <th>IP Address</th>
-            <th>Method</th>
-            <th>Response Time</th>
-            <th><div style="width:175px;">UserId</div></th>
-            <th>Path</th>
+            <MudTh><div style="width:175px;"><MudFab Icon="@Icons.Filled.Refresh" OnClick="@(() => LoadData())" Raised="true" Mini="true" Style="margin-right:16px;"></MudFab> Date / Time</div></MudTh>
+            <MudTh>Http Code</MudTh>
+            <MudTh>IP Address</MudTh>
+            <MudTh>Method</MudTh>
+            <MudTh>Response Time</MudTh>
+            <MudTh><div style="width:175px;">UserId</div></MudTh>
+            <MudTh>Path</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <td>@context.RequestTime</td>
-            <td>@context.StatusCode</td>
-            <td><span style="font-size:small">@context.IPAddress</span></td>
-            <td>@context.Method</td>
-            <td>@context.ResponseMillis</td>
-            <td>@context.ApplicationUserId</td>
-            <td>@context.Path</td>
+            <MudTd>@context.RequestTime</MudTd>
+            <MudTd>@context.StatusCode</MudTd>
+            <MudTd><span style="font-size:small">@context.IPAddress</span></MudTd>
+            <MudTd>@context.Method</MudTd>
+            <MudTd>@context.ResponseMillis</MudTd>
+            <MudTd>@context.ApplicationUserId</MudTd>
+            <MudTd>@context.Path</MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager />

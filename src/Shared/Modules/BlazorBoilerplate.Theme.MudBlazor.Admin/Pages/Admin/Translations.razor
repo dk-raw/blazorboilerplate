@@ -15,52 +15,52 @@
 }
 else
 {
-    <MudTextField ValueChanged="(string filter) => LoadKeys(filter)" Icon="search" />
-    <MudTable Items="@localizationRecordKeys" Class="mat-elevation-z5" Striped="true" PageSize="@pageSize" ShowPaging="false"
+    <MudTextField ValueChanged="(string filter) => LoadKeys(filter)" AdornmentIcon="@Icons.Filled.Search" />
+    <MudTable Items="@localizationRecordKeys" Striped="true"
               AllowSelection="true" SelectionChanged="async (object key) => await LoadLocalizationRecords((LocalizationRecordKey)key)">
         <HeaderContent>
-            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["NewTranslation"] OnClick="@OpenNewKeyDialogOpen"></MudButton></th>
-            <th>@L["MsgId"]</th>
-            <th>@L["ContextId"]</th>
+            <MudTh><MudIconButton Icon="@Icons.Filled.Add" Label=@L["NewTranslation"] OnClick="@OpenNewKeyDialogOpen"></MudIconButton></MudTh>
+            <MudTh>@L["MsgId"]</MudTh>
+            <MudTh>@L["ContextId"]</MudTh>
         </HeaderContent>
         <RowTemplate Context="keyRow">
-            <td>
+            <MudTd>
                 <div>
                     <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenEditDialog(keyRow))"></MudIconButton>
                     <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteDialog(keyRow))"></MudIconButton>
                 </div>
-            </td>
-            <td>@keyRow.MsgId</td>
-            <td>@keyRow.ContextId</td>
+            </MudTd>
+            <MudTd>@keyRow.MsgId</MudTd>
+            <MudTd>@keyRow.ContextId</MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager />
         </PagerContent>
     </MudTable>
 
-    <MudTable Items="@localizationRecords" Class="mat-elevation-z5" Striped="true" ShowPaging="false" PageSize="50">
+    <MudTable Items="@localizationRecords" Striped="true">
         <HeaderContent>
-            <th></th>
-            <th>@L["Culture"]</th>
-            <th style="width: 100%;">@L["Translation"]</th>
-            <th></th>
+            <MudTh></MudTh>
+            <MudTh>@L["Culture"]</MudTh>
+            <MudTh style="width: 100%;">@L["Translation"]</MudTh>
+            <MudTh></MudTh>
         </HeaderContent>
         <RowTemplate Context="row">
-            <td>
+            <MudTd>
                 <div>
                     <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => DeleteLocalizationRecord(row))" Disabled="@(row.Culture == BlazorBoilerplate.Shared.Localizer.Settings.NeutralCulture)"></MudIconButton>
                 </div>
-            </td>
-            <td><b>@row.Culture</b></td>
-            <td>
+            </MudTd>
+            <MudTd><b>@row.Culture</b></MudTd>
+            <MudTd>
                 <MudTextField @bind-Value="@row.Translation" TextArea="true" FullWidth="true" Required="true" Style="resize: both"></MudTextField>
-            </td>
-            <td>
+            </MudTd>
+            <MudTd>
                 <div>
                     <MudButton Style="margin-bottom: 5px; white-space: nowrap" Raised="true" OnClick="@(() => OpenEditAsHtmlDialog(row))">@L["Edit as HTML"]</MudButton>
                     <MudButton Outlined="@(row.PluralTranslations.Count == 0)" Raised="@(row.PluralTranslations.Count > 0)" OnClick="@(() => OpenPluralDialog(row))">@L["Plural"]</MudButton>
                 </div>
-            </td>
+            </MudTd>
         </RowTemplate>
     </MudTable>
     @if (LocalizationCultures.Count > 0)
@@ -152,24 +152,24 @@ else
     <MudDialog @bind-IsVisible="@isPluralDialogOpen">
         <TitleContent>@L["Plural"]</TitleContent>
         <DialogContent>
-            <MudTable Items="@currentLocalizationRecord.PluralTranslations" Class="mat-elevation-z5" Striped="true" ShowPaging="false" PageSize="50">
+            <MudTable Items="@currentLocalizationRecord.PluralTranslations" Striped="true">
                 <HeaderContent>
-                    <th></th>
-                    <th>@L["Index"]</th>
-                    <th>@L["Translation"]</th>
+                    <MudTh></MudTh>
+                    <MudTh>@L["Index"]</MudTh>
+                    <MudTh>@L["Translation"]</MudTh>
                 </HeaderContent>
                 <RowTemplate Context="row">
-                    <td>
+                    <MudTd>
                         <div>
                             <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => DeletePluralTranslation(row))"></MudIconButton>
                         </div>
-                    </td>
-                    <td>
+                    </MudTd>
+                    <MudTd>
                         <MudTextField @bind-Value="@row.Index" TextArea="true" FullWidth="true" Required="true"></MudTextField>
-                    </td>
-                    <td>
+                    </MudTd>
+                    <MudTd>
                         <MudTextField @bind-Value="@row.Translation" TextArea="true" FullWidth="true" Required="true" Style="resize: both"></MudTextField>
-                    </td>
+                    </MudTd>
                 </RowTemplate>
             </MudTable>
             @if (PluralFormRules[currentLocalizationRecord.Culture].Count > currentLocalizationRecord.PluralTranslations.Count)

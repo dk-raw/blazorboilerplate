@@ -20,28 +20,26 @@
 }
 else
 {
-    <MudTable Class="mat-elevation-z5" Items="@roles" Striped="true" PageSize="@pageSize" ShowPaging="false">
+    <MudTable Items="@roles" Striped="true">
         <HeaderContent>
-            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["New Role"] OnClick="@(() => OpenUpsertRoleDialog())"></MudButton></th>
-            <th>@L["Name"]</th>
-            <th>@L["Permissions"]</th>
+            <MudTh><MudIconButton Icon="@Icons.Filled.Add" Label=@L["New Role"] OnClick="@(() => OpenUpsertRoleDialog())"></MudIconButton></MudTh>
+            <MudTh>@L["Name"]</MudTh>
+            <MudTh>@L["Permissions"]</MudTh>
         </HeaderContent>
         <RowTemplate Context="RoleRow">
-            <td>
-                <div style="width:155px;">
-                    <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenUpsertRoleDialog(@RoleRow.Name))" Disabled="@(RoleRow.Name == BlazorBoilerplate.Constants.DefaultRoleNames.Administrator)"></MudIconButton>
-                    <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteDialog(@RoleRow.Name))" Disabled="@(RoleRow.Name == BlazorBoilerplate.Constants.DefaultRoleNames.Administrator)"></MudIconButton>
-                </div>
-            </td>
-            <td><div style="width:130px;">@RoleRow.Name</div></td>
-            <td>
+            <MudTd>
+                <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenUpsertRoleDialog(@RoleRow.Name))" Disabled="@(RoleRow.Name == BlazorBoilerplate.Constants.DefaultRoleNames.Administrator)"></MudIconButton>
+                <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteDialog(@RoleRow.Name))" Disabled="@(RoleRow.Name == BlazorBoilerplate.Constants.DefaultRoleNames.Administrator)"></MudIconButton>
+            </MudTd>
+            <MudTd><div style="width:130px;">@RoleRow.Name</div></MudTd>
+            <MudTd>
                 <MudChipSet>
                     @foreach (var permission in @RoleRow.Permissions)
                         {
                         <MudChip Text="@permission"></MudChip>
                         }
                 </MudChipSet>
-            </td>
+            </MudTd>
         </RowTemplate>
     </MudTable>
 }
@@ -56,14 +54,14 @@ else
                 <MudTextField @bind-Value="@currentRoleName" Disabled="@isCurrentRoleReadOnly" Label="Role Name" AdornmentIcon="@Icons.Filled.Add" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
         </fieldset>
-        <MudTable Items="@permissionsSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">
+        <MudTable Items="@permissionsSelections">
             <HeaderContent>
-                <th>@L["Permissions"]</th>
-                <th>@L["Allow"]</th>
+                <MudTh>@L["Permissions"]</MudTh>
+                <MudTh>@L["Allow"]</MudTh>
             </HeaderContent>
             <RowTemplate>
-                <td>@context.DisplayValue</td>
-                <td><MudCheckBox @bind-Checked="@context.Selected"></MudCheckBox></td>
+                <MudTd>@context.DisplayValue</MudTd>
+                <MudTd><MudCheckBox @bind-Checked="@context.Selected"></MudCheckBox></MudTd>
             </RowTemplate>
         </MudTable>
     </DialogContent>

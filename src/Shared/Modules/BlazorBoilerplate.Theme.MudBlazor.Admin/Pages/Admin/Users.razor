@@ -28,19 +28,19 @@ else
             <MudTh>@L["Roles"]</MudTh>
         </HeaderContent>
         <RowTemplate Context="UserRow">
-            <td>
+            <MudTd>
                 <div style="width:155px;">
                     <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenEditDialog(UserRow))"></MudIconButton>
                     <MudIconButton Icon="@Icons.Filled.RotateRight" OnClick="@(() => OpenResetPasswordDialog(UserRow))" Disabled="@(UserRow.UserName == DefaultUserNames.Administrator)"></MudIconButton>
                     <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteDialog(UserRow))" Disabled="@(UserRow.UserName == DefaultUserNames.Administrator)"></MudIconButton>
                 </div>
-            </td>
-            <td><div style="width:130px;">@UserRow.UserName</div></td>
-            <td style="white-space: nowrap">
+            </MudTd>
+            <MudTd><div style="width:130px;">@UserRow.UserName</div></MudTd>
+            <MudTd style="white-space: nowrap">
                 @UserRow.Email @if (UserRow.EmailConfirmed)
                     {<MudIcon Style="vertical-align: text-bottom" Icon="@Icons.Filled.CheckCircle"></MudIcon>}
-            </td>
-            <td>
+            </MudTd>
+            <MudTd>
                 @if (@UserRow.UserRoles != null)
                     {<MudChipSet>
                         @foreach (var ur in @UserRow.UserRoles)
@@ -48,7 +48,7 @@ else
                             <MudChip Text="@ur.Role.Name"></MudChip>
                             }
                     </MudChipSet>}
-            </td>
+            </MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager />

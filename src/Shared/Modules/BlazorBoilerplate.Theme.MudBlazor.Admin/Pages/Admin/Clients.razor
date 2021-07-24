@@ -23,47 +23,47 @@ else
 {
     <MudTable Class="mat-elevation-z5" Items="@clients" Striped="true">
         <HeaderContent>
-            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["New Client"] OnClick="@(() => OpenUpsertClientDialog())"></MudButton></th>
-            <th>Id</th>
-            <th>Enabled</th>
-            <th>Access Token Lifetime</th>
-            <th>Require Client Secret</th>
-            <th>Require Consent</th>
-            <th>Local Login</th>
-            <th>Grant Types</th>
-            <th>PKCE</th>
-            <th>Scopes</th>
+            <MudTh><MudButton Icon="@Icons.Filled.Add" Label=@L["New Client"] OnClick="@(() => OpenUpsertClientDialog())"></MudButton></MudTh>
+            <MudTh>Id</MudTh>
+            <MudTh>Enabled</MudTh>
+            <MudTh>Access Token Lifetime</MudTh>
+            <MudTh>Require Client Secret</MudTh>
+            <MudTh>Require Consent</MudTh>
+            <MudTh>Local Login</MudTh>
+            <MudTh>Grant Types</MudTh>
+            <MudTh>PKCE</MudTh>
+            <MudTh>Scopes</MudTh>
         </HeaderContent>
         <RowTemplate Context="ClientRow">
-            <td>
+            <MudTd>
                 <div style="width:155px;">
                     <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenUpsertClientDialog(ClientRow))"></MudIconButton>
                     <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteClientDialog(ClientRow))"></MudIconButton>
                 </div>
-            </td>
-            <td><div style="min-width:130px;">@ClientRow.ClientId</div></td>
-            <td><MudSwitch Checked="@ClientRow.Enabled" CheckedChanged="@((bool i) => UpdateEnabled(ClientRow))"></MudSwitch></td>
-            <td><div style="min-width:130px;">@ClientRow.AccessTokenLifetime</div></td>
-            <td><MudSwitch @bind-Checked="@ClientRow.RequireClientSecret" Disabled="true"></MudSwitch></td>
-            <td><MudSwitch @bind-Checked="@ClientRow.RequireConsent" Disabled="true"></MudSwitch></td>
-            <td><MudSwitch @bind-Checked="@ClientRow.EnableLocalLogin" Disabled="true"></MudSwitch></td>
-            <td>
+            </MudTd>
+            <MudTd><div style="min-width:130px;">@ClientRow.ClientId</div></MudTd>
+            <MudTd><MudSwitch Checked="@ClientRow.Enabled" CheckedChanged="@((bool i) => UpdateEnabled(ClientRow))"></MudSwitch></MudTd>
+            <MudTd><div style="min-width:130px;">@ClientRow.AccessTokenLifetime</div></MudTd>
+            <MudTd><MudSwitch @bind-Checked="@ClientRow.RequireClientSecret" Disabled="true"></MudSwitch></MudTd>
+            <MudTd><MudSwitch @bind-Checked="@ClientRow.RequireConsent" Disabled="true"></MudSwitch></MudTd>
+            <MudTd><MudSwitch @bind-Checked="@ClientRow.EnableLocalLogin" Disabled="true"></MudSwitch></MudTd>
+            <MudTd>
                 <MudChipSet>
                     @foreach (var grantType in ClientRow.AllowedGrantTypes)
                         {
                         <MudChip Text="@grantType"></MudChip>
                         }
                 </MudChipSet>
-            </td>
-            <td><MudSwitch @bind-Checked="@ClientRow.RequirePkce" Disabled="true"></MudSwitch></td>
-            <td>
+            </MudTd>
+            <MudTd><MudSwitch @bind-Checked="@ClientRow.RequirePkce" Disabled="true"></MudSwitch></MudTd>
+            <MudTd>
                 <MudChipSet>
                     @foreach (var scope in ClientRow.AllowedScopes)
                         {
                         <MudChip Text="@scope"></MudChip>
                         }
                 </MudChipSet>
-            </td>
+            </MudTd>
         </RowTemplate>
     </MudTable>
 }
@@ -104,55 +104,55 @@ else
                             <MudSwitch @bind-Checked="@currentClient.RequireClientSecret" Label="Require Client Secret"></MudSwitch>
                         </div>
                     </fieldset>
-                    <MudTable Items="@currentClient.ClientSecrets" Class="mat-elevation-z5" ShowPaging="false" PageSize="@int.MaxValue" style="@(currentClient.RequireClientSecret ? "" : "display:none;")">
+                    <MudTable Items="@currentClient.ClientSecrets" style="@(currentClient.RequireClientSecret ? "" : "display:none;")">
                         <HeaderContent>
-                            <th style="min-width:190px;"><MudButton Icon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateClientSecretDialogOpen())"></MudButton></th>
-                            <th>Expiration</th>
-                            <th>Description</th>
+                            <MudTh style="min-width:190px;"><MudButton Icon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateClientSecretDialogOpen())"></MudButton></MudTh>
+                            <MudTh>Expiration</MudTh>
+                            <MudTh>Description</MudTh>
                         </HeaderContent>
                         <RowTemplate Context="ClientSecretRow">
-                            <td style="text-align:center;">
+                            <MudTd style="text-align:center;">
                                 <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteClientSecretDialog(ClientSecretRow))"></MudIconButton>
-                            </td>
-                            <td>@ClientSecretRow.Expiration</td>
-                            <td>@ClientSecretRow.GetDisplayValue()</td>
+                            </MudTd>
+                            <MudTd>@ClientSecretRow.Expiration</MudTd>
+                            <MudTd>@ClientSecretRow.GetDisplayValue()</MudTd>
                         </RowTemplate>
                     </MudTable>
                 </MudTabPanel>
                 <MudTabPanel Text="Grant Types">
-                    <MudTable Items="@grantTypeSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">
+                    <MudTable Items="@grantTypeSelections">
                         <HeaderContent>
-                            <th>@L["Name"]</th>
-                            <th>Allow</th>
+                            <MudTh>@L["Name"]</MudTh>
+                            <MudTh>Allow</MudTh>
                         </HeaderContent>
                         <RowTemplate Context="GrantTypeRow">
-                            <td>@GrantTypeRow.DisplayValue</td>
-                            <td><MudCheckBox @bind-Checked="@GrantTypeRow.Selected"></MudCheckBox></td>
+                            <MudTd>@GrantTypeRow.DisplayValue</MudTd>
+                            <MudTd><MudCheckBox @bind-Checked="@GrantTypeRow.Selected"></MudCheckBox></MudTd>
                         </RowTemplate>
                     </MudTable>
                     <MudSwitch @bind-Checked="@currentClient.RequirePkce" Label="Proof Key for Code Exchange (PKCE)"></MudSwitch>
                 </MudTabPanel>
                 <MudTabPanel Text="Standard Scopes">
-                    <MudTable Items="@standardScopeSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">
+                    <MudTable Items="@standardScopeSelections">
                         <HeaderContent>
-                            <th>@L["Name"]</th>
-                            <th>Allow</th>
+                            <MudTh>@L["Name"]</MudTh>
+                            <MudTh>Allow</MudTh>
                         </HeaderContent>
                         <RowTemplate Context="StandardScopeRow">
-                            <td>@StandardScopeRow.DisplayValue</td>
-                            <td><MudCheckBox @bind-Checked="@StandardScopeRow.Selected"></MudCheckBox></td>
+                            <MudTd>@StandardScopeRow.DisplayValue</MudTd>
+                            <MudTd><MudCheckBox @bind-Checked="@StandardScopeRow.Selected"></MudCheckBox></MudTd>
                         </RowTemplate>
                     </MudTable>
                 </MudTabPanel>
                 <MudTabPanel Text="API Scopes">
-                    <MudTable Items="@apiScopeSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">
+                    <MudTable Items="@apiScopeSelections">
                         <HeaderContent>
-                            <th>@L["Name"]</th>
-                            <th>Allow</th>
+                            <MudTh>@L["Name"]</MudTh>
+                            <MudTh>Allow</MudTh>
                         </HeaderContent>
                         <RowTemplate Context="ApiScopeRow">
-                            <td>@ApiScopeRow.DisplayValue</td>
-                            <td><MudCheckBox @bind-Checked="@ApiScopeRow.Selected"></MudCheckBox></td>
+                            <MudTd>@ApiScopeRow.DisplayValue</MudTd>
+                            <MudTd><MudCheckBox @bind-Checked="@ApiScopeRow.Selected"></MudCheckBox></MudTd>
                         </RowTemplate>
                     </MudTable>
                 </MudTabPanel>
@@ -230,14 +230,14 @@ else
                         </div>
                     </fieldset>
                     <h3 class="mat-subtitle1">Allowed Identity Token Signing Algorithms</h3>
-                    <MudTable Items="@tokenSigningAlgorithmsSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">
+                    <MudTable Items="@tokenSigningAlgorithmsSelections">
                         <HeaderContent>
-                            <th>@L["Name"]</th>
-                            <th>Allow</th>
+                            <MudTh>@L["Name"]</MudTh>
+                            <MudTh>Allow</MudTh>
                         </HeaderContent>
                         <RowTemplate Context="TokenSigningAlgorithmsRow">
-                            <td>@TokenSigningAlgorithmsRow.DisplayValue</td>
-                            <td><MudCheckBox @bind-Checked="@TokenSigningAlgorithmsRow.Selected"></MudCheckBox></td>
+                            <MudTd>@TokenSigningAlgorithmsRow.DisplayValue</MudTd>
+                            <MudTd><MudCheckBox @bind-Checked="@TokenSigningAlgorithmsRow.Selected"></MudCheckBox></MudTd>
                         </RowTemplate>
                     </MudTable>
                 </MudTabPanel>

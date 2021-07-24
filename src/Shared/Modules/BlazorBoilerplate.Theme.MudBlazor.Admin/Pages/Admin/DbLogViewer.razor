@@ -30,20 +30,20 @@ else
         <MudSelectItem Value="@item">@item</MudSelectItem>
     }
 </MudSelect>
-<MudTable Items="@dbLogItems" Class="mat-elevation-z5" Striped="true" PageSize="@pageSize" ShowPaging="false">
+<MudTable Items="@dbLogItems" Class="mat-elevation-z5" Striped="true">
     <HeaderContent>
-        <th>Timestamp</th>
-        <th>Logging Level</th>
-        <th>Log Message</th>
-        <th>Exception</th>
-        <th>Recorded Properties</th>
+        <MudTh>Timestamp</MudTh>
+        <MudTh>Logging Level</MudTh>
+        <MudTh>Log Message</MudTh>
+        <MudTh>Exception</MudTh>
+        <MudTh>Recorded Properties</MudTh>
     </HeaderContent>
     <RowTemplate>
-        <td><span style="font-size:small">@context.TimeStamp.ToString()</span></td>
-        <td><span style="font-size:small">@context.Level</span></td>
-        <td><span style="font-size:small">@context.Message</span></td>
-        <td><span style="font-size:small">@context.Exception?.ToString()</span></td>
-        <td>
+        <MudTd><span style="font-size:small">@context.TimeStamp.ToString()</span></MudTd>
+        <MudTd><span style="font-size:small">@context.Level</span></MudTd>
+        <MudTd><span style="font-size:small">@context.Message</span></MudTd>
+        <MudTd><span style="font-size:small">@context.Exception?.ToString()</span></MudTd>
+        <MudTd>
             @if (context.LogProperties?.Any() ?? false)
                 {
                 <ul>
@@ -53,7 +53,7 @@ else
                         }
                 </ul>
                 }
-        </td>
+        </MudTd>
     </RowTemplate>
     <PagerContent>
         <MudTablePager />

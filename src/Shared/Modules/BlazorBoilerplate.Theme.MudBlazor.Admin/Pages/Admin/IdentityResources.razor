@@ -23,38 +23,38 @@ else
 {
     <MudTable Class="mat-elevation-z5" Items="@identityResources" Striped="true">
         <HeaderContent>
-            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["New Identity Resource"] OnClick="@(() => OpenUpsertIdentityResourceDialog())"></MudButton></th>
-            <th>@L["Name"]</th>
-            <th>Enabled</th>
-            <th>Display Name</th>
-            <th>Description</th>
-            <th>Required</th>
-            <th>Emphasize</th>
-            <th>Show in discovery document</th>
-            <th>User Claims</th>
+            <MudTh><MudButton Icon="@Icons.Filled.Add" Label=@L["New Identity Resource"] OnClick="@(() => OpenUpsertIdentityResourceDialog())"></MudButton></MudTh>
+            <MudTh>@L["Name"]</MudTh>
+            <MudTh>Enabled</MudTh>
+            <MudTh>Display Name</MudTh>
+            <MudTh>Description</MudTh>
+            <MudTh>Required</MudTh>
+            <MudTh>Emphasize</MudTh>
+            <MudTh>Show in discovery document</MudTh>
+            <MudTh>User Claims</MudTh>
         </HeaderContent>
         <RowTemplate Context="IdentityResourceRow">
-            <td>
+            <MudTd>
                 <div style="width:155px;">
                     <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenUpsertIdentityResourceDialog(IdentityResourceRow))"></MudIconButton>
                     <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteIdentityResourceDialog(IdentityResourceRow))"></MudIconButton>
                 </div>
-            </td>
-            <td><div style="min-width:130px;">@IdentityResourceRow.Name</div></td>
-            <td><MudSwitch Checked="@IdentityResourceRow.Enabled" CheckedChanged="@((bool item) => UpdateEnabled(IdentityResourceRow))"></MudSwitch></td>
-            <td><div style="min-width:130px;">@IdentityResourceRow.DisplayName</div></td>
-            <td><div style="min-width:130px;">@IdentityResourceRow.Description</div></td>
-            <td><MudSwitch @bind-Checked="@IdentityResourceRow.Required" Disabled="true"></MudSwitch></td>
-            <td><MudSwitch @bind-Checked="@IdentityResourceRow.Emphasize" Disabled="true"></MudSwitch></td>
-            <td><MudSwitch @bind-Checked="@IdentityResourceRow.ShowInDiscoveryDocument" Disabled="true"></MudSwitch></td>
-            <td>
+            </MudTd>
+            <MudTd><div style="min-width:130px;">@IdentityResourceRow.Name</div></MudTd>
+            <MudTd><MudSwitch Checked="@IdentityResourceRow.Enabled" CheckedChanged="@((bool item) => UpdateEnabled(IdentityResourceRow))"></MudSwitch></MudTd>
+            <MudTd><div style="min-width:130px;">@IdentityResourceRow.DisplayName</div></MudTd>
+            <MudTd><div style="min-width:130px;">@IdentityResourceRow.Description</div></MudTd>
+            <MudTd><MudSwitch @bind-Checked="@IdentityResourceRow.Required" Disabled="true"></MudSwitch></MudTd>
+            <MudTd><MudSwitch @bind-Checked="@IdentityResourceRow.Emphasize" Disabled="true"></MudSwitch></MudTd>
+            <MudTd><MudSwitch @bind-Checked="@IdentityResourceRow.ShowInDiscoveryDocument" Disabled="true"></MudSwitch></MudTd>
+            <MudTd>
                 <MudChipSet>
                     @foreach (var userClaim in IdentityResourceRow.UserClaims)
                         {
                         <MudChip Text="@userClaim"></MudChip>
                         }
                 </MudChipSet>
-            </td>
+            </MudTd>
         </RowTemplate>
     </MudTable>
 }
@@ -103,14 +103,14 @@ else
                     </fieldset>
                     <MudDivider />
                     <h3 class="mat-subtitle1">Jwt Claims</h3>
-                    <MudTable Items="@jwtClaimSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">
+                    <MudTable Items="@jwtClaimSelections">
                         <HeaderContent>
-                            <th>@L["Name"]</th>
-                            <th>Required</th>
+                            <MudTh>@L["Name"]</MudTh>
+                            <MudTh>Required</MudTh>
                         </HeaderContent>
                         <RowTemplate Context="JwtClaimRow">
-                            <td>@JwtClaimRow.DisplayValue</td>
-                            <td><MudCheckBox @bind-Checked="@JwtClaimRow.Selected"></MudCheckBox></td>
+                            <MudTd>@JwtClaimRow.DisplayValue</MudTd>
+                            <MudTd><MudCheckBox @bind-Checked="@JwtClaimRow.Selected"></MudCheckBox></MudTd>
                         </RowTemplate>
                     </MudTable>
                 </MudTabPanel>

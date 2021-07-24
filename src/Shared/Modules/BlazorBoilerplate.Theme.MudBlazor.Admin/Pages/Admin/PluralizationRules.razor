@@ -13,22 +13,22 @@
 }
 else
 {
-    <MudTable Items="@PluralFormRules" Class="mat-elevation-z5" Striped="true" ShowPaging="false" PageSize="50">
+    <MudTable Items="@PluralFormRules" Class="mat-elevation-z5" Striped="true">
         <HeaderContent>
-            <th></th>
-            <th>@L["Culture"]</th>
-            <th>@L["Count"]</th>
-            <th>@L["Selector"]</th>
+            <MudTh></MudTh>
+            <MudTh>@L["Culture"]</MudTh>
+            <MudTh>@L["Count"]</MudTh>
+            <MudTh>@L["Selector"]</MudTh>
         </HeaderContent>
         <RowTemplate Context="row">
-            <td>
+            <MudTd>
                 <div>
                     <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDelete(row))"></MudIconButton>
                 </div>
-            </td>
-            <td>@row.Language</td>
-            <td><MudTextField @bind-Value="@row.Count" FullWidth="true" Required="true"></MudTextField></td>
-            <td><MudTextField @bind-Value="@row.Selector" FullWidth="true" Required="true"></MudTextField></td>
+            </MudTd>
+            <MudTd>@row.Language</MudTd>
+            <MudTd><MudTextField @bind-Value="@row.Count" FullWidth="true" Required="true"></MudTextField></MudTd>
+            <MudTd><MudTextField @bind-Value="@row.Selector" FullWidth="true" Required="true"></MudTextField></MudTd>
         </RowTemplate>
     </MudTable>
     @if (LocalizationCultures.Count > 0)

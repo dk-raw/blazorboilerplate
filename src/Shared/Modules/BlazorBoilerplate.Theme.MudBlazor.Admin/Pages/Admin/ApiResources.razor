@@ -24,41 +24,41 @@ else
 {
     <MudTable Class="mat-elevation-z5" Items="@apiResources" Striped="true">
         <HeaderContent>
-            <th><MudButton Icon="@Icons.Filled.Add" Label=@L["New API Resource"] OnClick="@(() => OpenUpsertApiResourceDialog())"></MudButton></th>
-            <th>@L["Name"]</th>
-            <th>Enabled</th>
-            <th>Display Name</th>
-            <th>Description</th>
-            <th>Scopes</th>
-            <th>User Claims</th>
+            <MudTh><MudButton Icon="@Icons.Filled.Add" Label=@L["New API Resource"] OnClick="@(() => OpenUpsertApiResourceDialog())"></MudButton></MudTh>
+            <MudTh>@L["Name"]</MudTh>
+            <MudTh>Enabled</MudTh>
+            <MudTh>Display Name</MudTh>
+            <MudTh>Description</MudTh>
+            <MudTh>Scopes</MudTh>
+            <MudTh>User Claims</MudTh>
         </HeaderContent>
         <RowTemplate Context="ApiResourceRow">
-            <td>
+            <MudTd>
                 <div style="width:155px;">
                     <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenUpsertApiResourceDialog(ApiResourceRow))"></MudIconButton>
                     <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteApiResourceDialog(ApiResourceRow))"></MudIconButton>
                 </div>
-            </td>
-            <td><div style="min-width:130px;">@ApiResourceRow.Name</div></td>
-            <td><MudSwitch Checked="@ApiResourceRow.Enabled" CheckedChanged="@((bool item) => UpdateEnabled(ApiResourceRow))"></MudSwitch></td>
-            <td><div style="min-width:130px;">@ApiResourceRow.DisplayName</div></td>
-            <td><div style="min-width:130px;">@ApiResourceRow.Description</div></td>
-            <td>
+            </MudTd>
+            <MudTd><div style="min-width:130px;">@ApiResourceRow.Name</div></MudTd>
+            <MudTd><MudSwitch Checked="@ApiResourceRow.Enabled" CheckedChanged="@((bool item) => UpdateEnabled(ApiResourceRow))"></MudSwitch></MudTd>
+            <MudTd><div style="min-width:130px;">@ApiResourceRow.DisplayName</div></MudTd>
+            <MudTd><div style="min-width:130px;">@ApiResourceRow.Description</div></MudTd>
+            <MudTd>
                 <MudChipSet>
                     @foreach (var scope in ApiResourceRow.Scopes)
                         {
                         <MudChip Text="@scope"></MudChip>
                         }
                 </MudChipSet>
-            </td>
-            <td>
+            </MudTd>
+            <MudTd>
                 <MudChipSet>
                     @foreach (var userClaim in ApiResourceRow.UserClaims)
                         {
                         <MudChip Text="@userClaim"></MudChip>
                         }
                 </MudChipSet>
-            </td>
+            </MudTd>
         </RowTemplate>
     </MudTable>
 }
@@ -93,30 +93,30 @@ else
                         </div>
                     </fieldset>
                     <h3 class="mat-subtitle1">Allowed Access Token Signing Algorithms</h3>
-                    <MudTable Items="@tokenSigningAlgorithmsSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">
+                    <MudTable Items="@tokenSigningAlgorithmsSelections">
                         <HeaderContent>
-                            <th>@L["Name"]</th>
-                            <th>Allow</th>
+                            <MudTh>@L["Name"]</MudTh>
+                            <MudTh>Allow</MudTh>
                         </HeaderContent>
                         <RowTemplate Context="TokenSigningAlgorithmsRow">
-                            <td>@TokenSigningAlgorithmsRow.DisplayValue</td>
-                            <td><MudCheckBox @bind-Checked="@TokenSigningAlgorithmsRow.Selected"></MudCheckBox></td>
+                            <MudTd>@TokenSigningAlgorithmsRow.DisplayValue</MudTd>
+                            <MudTd><MudCheckBox @bind-Checked="@TokenSigningAlgorithmsRow.Selected"></MudCheckBox></MudTd>
                         </RowTemplate>
                     </MudTable>
                 </MudTabPanel>
                 <MudTabPanel Text="Secrets">
-                    <MudTable Items="@currentApiResource.ApiSecrets" Class="mat-elevation-z5" ShowPaging="false" PageSize="@int.MaxValue">
+                    <MudTable Items="@currentApiResource.ApiSecrets">
                         <HeaderContent>
-                            <th style="min-width:190px;"><MudButton Icon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateApiResourceSecretDialogOpen())"></MudButton></th>
-                            <th>Expiration</th>
-                            <th>Description</th>
+                            <MudTh style="min-width:190px;"><MudButton Icon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateApiResourceSecretDialogOpen())"></MudButton></MudTh>
+                            <MudTh>Expiration</MudTh>
+                            <MudTh>Description</MudTh>
                         </HeaderContent>
                         <RowTemplate Context="ApiResourceSecretRow">
-                            <td style="text-align:center;">
+                            <MudTd style="text-align:center;">
                                 <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteApiResourceSecretDialog(ApiResourceSecretRow))"></MudIconButton>
-                            </td>
-                            <td>@ApiResourceSecretRow.Expiration</td>
-                            <td>@ApiResourceSecretRow.GetDisplayValue()</td>
+                            </MudTd>
+                            <MudTd>@ApiResourceSecretRow.Expiration</MudTd>
+                            <MudTd>@ApiResourceSecretRow.GetDisplayValue()</MudTd>
                         </RowTemplate>
                     </MudTable>
                 </MudTabPanel>
@@ -130,14 +130,14 @@ else
                     </fieldset>
                     <MudDivider />
                     <h3 class="mat-subtitle1">Jwt Claims</h3>
-                    <MudTable Items="@jwtClaimSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">
+                    <MudTable Items="@jwtClaimSelections">
                         <HeaderContent>
-                            <th>@L["Name"]</th>
-                            <th>Required</th>
+                            <MudTh>@L["Name"]</MudTh>
+                            <MudTh>Required</MudTh>
                         </HeaderContent>
                         <RowTemplate Context="JwtClaimRow">
-                            <td>@JwtClaimRow.DisplayValue</td>
-                            <td><MudCheckBox @bind-Checked="@JwtClaimRow.Selected"></MudCheckBox></td>
+                            <MudTd>@JwtClaimRow.DisplayValue</MudTd>
+                            <MudTd><MudCheckBox @bind-Checked="@JwtClaimRow.Selected"></MudCheckBox></MudTd>
                         </RowTemplate>
                     </MudTable>
                 </MudTabPanel>
