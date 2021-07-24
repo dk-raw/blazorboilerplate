@@ -26,22 +26,22 @@ else
         <fieldset>
             <h5>@L["OutgoingEmail"]</h5>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_FromAddress].Value" Label="@L["SenderEmail"]" Icon="@Icons.Filled.AlternateEmail" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_FromAddress].Value" Label="@L["SenderEmail"]" AdornmentIcon="@Icons.Filled.AlternateEmail" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_FromName].Value" Label="@L["SenderName"]" Icon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_FromName].Value" Label="@L["SenderName"]" AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpServer].Value" Label="@L["SmtpServer"]" Icon="@Icons.Filled.Dns" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpServer].Value" Label="@L["SmtpServer"]" AdornmentIcon="@Icons.Filled.Dns" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
                 <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpPort].ValueAsInt" Label="@L["Port"]" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpUsername].Value" Label="@L["UserName"]" Icon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpUsername].Value" Label="@L["UserName"]" AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpPassword].Value" Label="@L["Password"]" Type="password" Icon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpPassword].Value" Label="@L["Password"]" Type="password" AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
                 <MudSwitch @bind-Checked="@settings[SettingKey.EmailConfiguration_SmtpUseSSL].ValueAsBool" Label="SSL"></MudSwitch>
@@ -54,16 +54,16 @@ else
             <h5>@L["IncomingEmail"]</h5>
             <h5>POP3</h5>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopServer].Value" Label="@L["PopServer"]" Icon="dns" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopServer].Value" Label="@L["PopServer"]" AdornmentIcon="@Icons.Filled.Dns" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
                 <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopPort].ValueAsInt" Label="@L["Port"]" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopUsername].Value" Label="@L["UserName"]" Icon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopUsername].Value" Label="@L["UserName"]" AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopPassword].Value" Label="@L["Password"]" Type="password" Icon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopPassword].Value" Label="@L["Password"]" Type="password" AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
                 <MudSwitch @bind-Checked="@settings[SettingKey.EmailConfiguration_PopUseSSL].ValueAsBool" Label="SSL"></MudSwitch>
@@ -71,16 +71,16 @@ else
             <MudDivider />
             <h5>IMAP</h5>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapServer].Value" Label="@L["ImapServer"]" Icon="dns" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapServer].Value" Label="@L["ImapServer"]" AdornmentIcon="@Icons.Filled.Dns" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
                 <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapPort].ValueAsInt" Label="@L["Port"]" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapUsername].Value" Label="@L["UserName"]" Icon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapUsername].Value" Label="@L["UserName"]" AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
-                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapPassword].Value" Label="@L["Password"]" Type="password" Icon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapPassword].Value" Label="@L["Password"]" Type="password" AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
             <div class="form-group">
                 <MudSwitch @bind-Checked="@settings[SettingKey.EmailConfiguration_ImapUseSSL].ValueAsBool" Label="SSL"></MudSwitch>
@@ -100,7 +100,7 @@ else
                 <ValidationSummary />
                 <fieldset>
                     <div class="form-group">
-                        <MudTextField @bind-Value="@email.ToAddress" Label=@L["Email"] Icon="@Icons.Outlined.Email" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                        <MudTextField @bind-Value="@email.ToAddress" Label=@L["Email"] AdornmentIcon="@Icons.Outlined.Email" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                     </div>
                     <div class="form-group">
                         <MudSwitch @bind-Checked="@email.Queued" Label=@L["Queued"]></MudSwitch>

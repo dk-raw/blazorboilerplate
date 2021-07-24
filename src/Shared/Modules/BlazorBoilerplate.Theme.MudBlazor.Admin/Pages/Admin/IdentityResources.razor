@@ -71,16 +71,16 @@ else
                 <MudTabPanel Text="Main">
                     <fieldset>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentIdentityResource.Name" Disabled="@isCurrentIdentityContextIdReadOnly" Label="Id" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentIdentityResource.Name" Disabled="@isCurrentIdentityContextIdReadOnly" Label="Id" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                         </div>
                         <div class="form-group">
                             <MudSwitch @bind-Checked="@currentIdentityResource.Enabled" Label="Enabled"></MudSwitch>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentIdentityResource.DisplayName" Label="Display Name" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentIdentityResource.DisplayName" Label="Display Name" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentIdentityResource.Description" Label="Description" Icon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+                            <MudTextField @bind-Value="@currentIdentityResource.Description" Label="Description" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
                         </div>
                         <div class="form-group">
                             <MudSwitch @bind-Checked="@currentIdentityResource.Required" Label="Required"></MudSwitch>

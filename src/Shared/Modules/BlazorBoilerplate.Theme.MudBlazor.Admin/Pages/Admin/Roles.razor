@@ -53,7 +53,7 @@ else
     <DialogContent>
         <fieldset>
             <div class="form-group">
-                <MudTextField @bind-Value="@currentRoleName" Disabled="@isCurrentRoleReadOnly" Label="Role Name" Icon="@Icons.Filled.Add" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                <MudTextField @bind-Value="@currentRoleName" Disabled="@isCurrentRoleReadOnly" Label="Role Name" AdornmentIcon="@Icons.Filled.Add" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
             </div>
         </fieldset>
         <MudTable Items="@permissionsSelections" Class="mat-elevation-z5, mdc-table-allow" ShowPaging="false" PageSize="@int.MaxValue">
