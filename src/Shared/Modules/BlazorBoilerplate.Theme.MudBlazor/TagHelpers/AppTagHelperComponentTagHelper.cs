@@ -8,7 +8,7 @@ namespace BlazorBoilerplate.Theme.Material.TagHelpers
     {
         public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            var path = typeof(Module).Namespace;
+            var path = typeof(Module).Namespace.Replace("Material", "MudBlazor");
 
             if (string.Equals(context.TagName, "app",
                     StringComparison.OrdinalIgnoreCase) &&

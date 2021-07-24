@@ -56,6 +56,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\BlazorBoilerplate.Infrastructure\BlazorBoilerplate.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Shared\BlazorBoilerplate.UI.Base\BlazorBoilerplate.UI.Base.csproj" />
+    <ProjectReference Include="..\..\Shared\Modules\BlazorBoilerplate.Theme.MudBlazor.Admin\BlazorBoilerplate.Theme.MudBlazor.Admin.csproj" />
+    <ProjectReference Include="..\..\Shared\Modules\BlazorBoilerplate.Theme.MudBlazor.Demo\BlazorBoilerplate.Theme.MudBlazor.Demo.csproj" />
     <ProjectReference Include="..\BlazorBoilerplate.Storage\BlazorBoilerplate.Storage.csproj" />
     <ProjectReference Include="..\..\Client\BlazorBoilerplate.Client\BlazorBoilerplate.Client.csproj" />
   </ItemGroup>

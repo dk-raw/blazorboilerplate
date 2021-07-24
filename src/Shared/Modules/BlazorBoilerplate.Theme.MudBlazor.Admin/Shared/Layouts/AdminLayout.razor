@@ -11,7 +11,7 @@
             <SelectCulture />
             <Login />
         </MudAppBar>
-        <MudDrawerHeader @bind-Opened="@_navMenuOpened">
+        <MudDrawerHeader @bind-Open="@_navMenuOpened">
             <MudDrawerHeader>
                 <div class="drawer-logo">
                     <img alt="@appState.AppName" class="logo-img" src="_content/BlazorBoilerplate.Theme.Material/images/logo-dark.svg" title="@appState.AppName">
@@ -61,38 +61,5 @@
     void NavToggle()
     {
         _navMenuOpened = !_navMenuOpened;
-        if (_navMenuOpened)
-        {
-            bbDrawerClass = "full";
-        }
-        else
-        {
-            bbDrawerClass = "closed";
-        }
-
-        StateHasChanged();
-    }
-
-    void NavMinify()
-    {
-        _navMinified = !_navMinified;
-
-        if (!_navMenuOpened)
-        {
-            _navMinified = true;
-        }
-
-        if (_navMinified)
-        {
-            bbDrawerClass = "mini";
-            _navMenuOpened = true;
-        }
-        else if (_navMenuOpened)
-        {
-            bbDrawerClass = "full";
-        }
-
-        _navMenuOpened = true;
-        StateHasChanged();
     }
 }

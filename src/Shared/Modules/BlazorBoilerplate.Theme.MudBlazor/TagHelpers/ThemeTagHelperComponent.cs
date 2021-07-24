@@ -9,7 +9,7 @@ namespace BlazorBoilerplate.Theme.Material.TagHelpers
         public override int Order => 1;
         public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            var path = typeof(Module).Namespace;
+            var path = typeof(Module).Namespace.Replace("Material", "MudBlazor");
 
             if (string.Equals(context.TagName, "head", StringComparison.OrdinalIgnoreCase))
             {
