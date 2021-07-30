@@ -3,18 +3,14 @@
     </div>
 </div>
 
-@if (ShowLogoBox)
-{
-    <div class="loading-container">
-        <img src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo.svg" style="width:100px;" /><br />
-        @ChildContent
-    </div>
-}
+<div class="loading-container">
+    <MudProgressCircular Color="Color.Primary" Style="height:70px;width:70px;" Indeterminate="true" />
+    @ChildContent
+</div>
+
 
 
 @code {
-    [Parameter]
-    public bool ShowLogoBox { get; set; }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
