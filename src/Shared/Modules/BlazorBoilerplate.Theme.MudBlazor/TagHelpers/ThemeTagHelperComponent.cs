@@ -21,7 +21,8 @@ namespace BlazorBoilerplate.Theme.Material.TagHelpers
 <link href=""_content/MudBlazor/MudBlazor.min.css"" rel=""stylesheet"" />
 <link href=""//cdn.quilljs.com/1.3.6/quill.snow.css"" rel=""stylesheet"">
 <link href=""//cdn.quilljs.com/1.3.6/quill.bubble.css"" rel=""stylesheet"">
-<link href=""_content/{path}/css/site.css"" rel=""stylesheet"" />");
+<link href=""_content/{path}/css/site.css"" rel=""stylesheet"" />
+<link href=""_content/{path}/{path}.bundle.scp.css"" rel=""stylesheet"" />");
             }
             else if (string.Equals(context.TagName, "app", StringComparison.OrdinalIgnoreCase))
             {
