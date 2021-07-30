@@ -1,8 +1,8 @@
 ﻿@implements IDynamicComponent
 @inject IStringLocalizer<Global> L
 
-<MudTooltip Text="Help">
-    <MudButton Icon="@Icons.Filled.Help" Link="https://github.com/enkodellc/blazorboilerplate"><span class="miniHover">@L["AppHelpAndSupport"]</span></MudButton>
+<MudTooltip Text="Help" Placement="Placement.Top">
+    <MudButton Icon="@Icons.Filled.Help" Link="https://github.com/enkodellc/blazorboilerplate">@L["AppHelpAndSupport"]</MudButton>
 </MudTooltip>
 
 @code {

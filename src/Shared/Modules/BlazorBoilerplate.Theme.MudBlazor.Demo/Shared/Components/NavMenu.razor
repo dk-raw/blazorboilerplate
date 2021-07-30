@@ -4,38 +4,38 @@
 @implements IDynamicComponent
 
 <MudNavLink Href="@navigationManager.ToAbsoluteUri(" ").AbsoluteUri" Match="NavLinkMatch.All" Icon="@Icons.Filled.Home">
-    <span class="miniHover">@L["AppNavHome"]</span>
+    @L["AppNavHome"]
 </MudNavLink>
 
 <MudNavLink Href="@navigationManager.ToAbsoluteUri("todo_list").AbsoluteUri" Icon="@Icons.Filled.ListAlt">
-    <span class="miniHover">@L["TodoNav"]</span>
+    @L["TodoNav"]
 </MudNavLink>
 
 <MudNavGroup Title="@L["AppNavFeatures"]" Icon="@Icons.Filled.Stars">
     <MudNavLink Href="@navigationManager.ToAbsoluteUri("drag_and_drop").AbsoluteUri" Icon="@Icons.Filled.TouchApp">
-        <span class="miniHover">@L["AppNavDragAndDrop"]</span>
+        @L["AppNavDragAndDrop"]
     </MudNavLink>
 </MudNavGroup>
 
 <MudNavLink Href="@navigationManager.ToAbsoluteUri("dashboard").AbsoluteUri" Disabled="@(!IsLoggedIn)" Icon="@Icons.Filled.BarChart">
-    <span class="miniHover">@L["Dashboard"]</span>
+    @L["Dashboard"]
 </MudNavLink>
 
 <MudNavGroup Title="@L["AppNavEmail"]" Disabled="@(!IsLoggedIn)" Icon="@Icons.Filled.MailOutline">
     <MudNavLink Href="@navigationManager.ToAbsoluteUri("email_view").AbsoluteUri" Disabled="@(!IsLoggedIn)" Icon="@Icons.Filled.Inbox">
-        <span class="miniHover">@L["AppNavReadEmail"]</span>
+        @L["AppNavReadEmail"]
     </MudNavLink>
     <MudNavLink Href="@navigationManager.ToAbsoluteUri("email").AbsoluteUri" Disabled="@(!IsLoggedIn)" Icon="@Icons.Filled.Send">
-        <span class="miniHover">@L["AppNavSendEmail"]</span>
+        @L["AppNavSendEmail"]
     </MudNavLink>
 </MudNavGroup>
 
 <MudNavLink Href="@navigationManager.ToAbsoluteUri("forum").AbsoluteUri" Disabled="@(!IsLoggedIn)" Icon="@Icons.Filled.Forum">
-    <span class="miniHover">@L["AppNavForum"]</span>
+    @L["AppNavForum"]
 </MudNavLink>
 
 <MudNavLink Href="@navigationManager.ToAbsoluteUri("sponsors").AbsoluteUri" Icon="@Icons.Filled.AttachMoney">
-    <span class="miniHover">@L["AppNavSponsors"]</span>
+    @L["AppNavSponsors"]
 </MudNavLink>
 
 @code {
