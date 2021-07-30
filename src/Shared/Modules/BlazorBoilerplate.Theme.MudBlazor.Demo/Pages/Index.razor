@@ -101,11 +101,10 @@
                 config =>
             {
                 config.Icon = Icons.Custom.Brands.GitHub;
-                config.RequireInteraction = true;
+                config.RequireInteraction = false;
                 config.ShowCloseIcon = true;
                 config.Onclick = snackbar =>
-                {
-
+                {                    
                     return Task.CompletedTask;
                 };
             });

@@ -5,12 +5,12 @@
 
 <CascadingValue Value="this">
     <MudLayout>
-        <MudAppBar Elevation="1">
+        <MudAppBar Elevation="25">
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
             <MudSpacer />
-            <TopRightBarSection></TopRightBarSection>
+            <TopRightBarSection />
         </MudAppBar>
-        <MudDrawer @bind-Open="@_navMenuOpened" Elevation="2" Class="drawer">
+        <MudDrawer @bind-Open="@_navMenuOpened" Elevation="2">
             <MudDrawerHeader>
                 <div class="drawer-logo">
                     <img alt="@appState.AppName" class="logo-img" src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo-dark.svg" title="@appState.AppName">
@@ -19,16 +19,18 @@
                 <UserProfile />
             </MudDrawerHeader>
             <NavMenu />
-            <DrawerFooter></DrawerFooter>
+            <DrawerFooter />
         </MudDrawer>
-        <MudMainContent>
-            @TopSection
-            @Body
-            <MudScrollToTop TopOffset="400" Style="z-index:2000;">
-                <MudFab Icon="@Icons.Material.Filled.KeyboardArrowUp" Color="Color.Primary" />
-            </MudScrollToTop>
-            <Footer></Footer>
+        <MudMainContent Style="min-height: 100vh; display: flex; flex-direction: column">
+            <MudContainer MaxWidth="MaxWidth.False" Style="flex: 1">
+                @TopSection
+                @Body
+            </MudContainer>
+            <Footer />
         </MudMainContent>
+        <MudScrollToTop TopOffset="400" Style="z-index:2000;">
+            <MudFab Icon="@Icons.Material.Filled.KeyboardArrowUp" Color="Color.Primary" />
+        </MudScrollToTop>
     </MudLayout>
 </CascadingValue>
 

@@ -63,7 +63,7 @@
 
 <div>Item Count: @itemCount</div>
 
-<MudSimpleTable FixedHeader="true" Dense="true" Bordered="true" Striped="true" Style="height:480px;overflow-y:auto;overflow-x:hidden">
+<MudSimpleTable FixedHeader="true" Dense="true" Bordered="true" Striped="true" Style="height:342px;overflow-y:auto;overflow-x:hidden">
     <thead>
         <tr>
             <th>
@@ -77,7 +77,7 @@
         </tr>
     </thead>
     <tbody>
-        <Virtualize @ref="asyncVirtualize" Context="item" ItemsProvider="LoadToDos" ItemSize="61" OverscanCount="7">
+        <Virtualize @ref="asyncVirtualize" Context="item" ItemsProvider="LoadToDos" ItemSize="61" OverscanCount="20">
             <ItemContent>
                 <tr @key="item.Id">
                     <td><MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteDialog(item))"></MudIconButton></td>

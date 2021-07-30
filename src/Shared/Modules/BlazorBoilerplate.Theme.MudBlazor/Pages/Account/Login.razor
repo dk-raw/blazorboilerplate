@@ -12,36 +12,40 @@
     <NotAuthorized>
         @if (loginViewModel?.EnableLocalLogin == true)
         {
-            <MudCard>
-                <div class="hidden-mdc-down">
-                    <MudIconButton Icon="@Icons.Filled.Home" Class="float-left" Link="/" />
-                </div>
-                <div class="logo">
-                    <a href="/" title="@appState.AppName Home"><img src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo.svg" style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
-                    <br />
-                    <h4>@L["Log in"]</h4>
-                </div>
-                <EditForm Model="@loginViewModel" OnValidSubmit="@SubmitLogin">
-                    <FluentValidationValidator />
-                    <ValidationSummary />
-                    <fieldset>
-                        <div class="form-group">
-                            <MudTextField AutoFocus="true" @bind-Value="@loginViewModel.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Material.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true" tabindex="1"></MudTextField>
-                        </div>
-                        <div class="form-group">
-                            <MudTextField @bind-Value="@loginViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password" tabindex="2"></MudTextField>
-                        </div>
-                        <div class="form-group">
-                            <MudButton class="float-right" Type="submit" tabindex="3">@L["Login"]</MudButton>
-                            @if (loginViewModel.AllowRememberLogin)
-                            {<MudCheckBox @bind-Checked="@loginViewModel.RememberMe" class="filled-in chk-col-blue">@L["Keep me logged in"]</MudCheckBox>}
-                        </div>
-                    </fieldset>
-                </EditForm>
-                <hr />
-                <div>
-                    <MudButton class="float-left" OnClick="@Register">@L["Sign up"]</MudButton>
-                </div>
+            <MudCard Elevation="25">
+                <MudCardHeader>
+                    <div class="hidden-mdc-down">
+                        <MudIconButton Icon="@Icons.Filled.Home" Class="float-left" Link="/" />
+                    </div>
+                    <div class="logo">
+                        <a href="/" title="@appState.AppName Home"><img src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo.svg" style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
+                        <br />
+                        <h4>@L["Log in"]</h4>
+                    </div>
+                </MudCardHeader>
+                <MudCardContent>
+                    <EditForm Model="@loginViewModel" OnValidSubmit="@SubmitLogin">
+                        <FluentValidationValidator />
+                        <ValidationSummary />
+                        <fieldset>
+                            <div class="form-group">
+                                <MudTextField AutoFocus="true" @bind-Value="@loginViewModel.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Material.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true" tabindex="1"></MudTextField>
+                            </div>
+                            <div class="form-group">
+                                <MudTextField @bind-Value="@loginViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password" tabindex="2"></MudTextField>
+                            </div>
+                            <div class="form-group">
+                                <MudButton class="float-right" Type="submit" tabindex="3">@L["Login"]</MudButton>
+                                @if (loginViewModel.AllowRememberLogin)
+                                {<MudCheckBox @bind-Checked="@loginViewModel.RememberMe" class="filled-in chk-col-blue">@L["Keep me logged in"]</MudCheckBox>}
+                            </div>
+                        </fieldset>
+                    </EditForm>
+                    <hr />
+                    <div>
+                        <MudButton class="float-left" OnClick="@Register">@L["Sign up"]</MudButton>
+                    </div>
+                </MudCardContent>
             </MudCard>
             <MudExpansionPanels>
                 <MudExpansionPanel @bind-Expanded="@forgotPasswordToggle">
