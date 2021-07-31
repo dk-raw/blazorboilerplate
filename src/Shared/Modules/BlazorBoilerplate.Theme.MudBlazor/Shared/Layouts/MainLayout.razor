@@ -14,10 +14,10 @@
             <MudDrawerHeader>
                 <div class="drawer-logo">
                     <img alt="@appState.AppName" class="logo-img" src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo-dark.svg" title="@appState.AppName">
-                    <a class="miniHover" href="/">@appState.AppName</a>
+                    <a href="/">@appState.AppName</a>
                 </div>
-                <UserProfile />
             </MudDrawerHeader>
+            <UserProfile />
             <NavMenu />
             <DrawerFooter />
         </MudDrawer>
@@ -52,7 +52,7 @@
         }
     }
 
-    void DrawerToggle()
+    private void DrawerToggle()
     {
         _navMenuOpened = !_navMenuOpened;
     }

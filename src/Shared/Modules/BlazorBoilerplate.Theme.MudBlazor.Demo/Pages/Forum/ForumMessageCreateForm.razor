@@ -1,9 +1,8 @@
 ﻿@using BlazorBoilerplate.Shared.Dto.Sample
 @using Microsoft.AspNetCore.Components.Forms
 
-<EditForm OnValidSubmit="CreateMessage" Model="@messageDto" autocomplete="off" >
+<EditForm OnValidSubmit="CreateMessage" Model="@messageDto" >
     <div class="card-footer">
-        <div class="input-group">
             @if (Creating)
             {
                 <MudButton FullWidth="true">
@@ -11,20 +10,12 @@
                 </MudButton>
             }
             else
-            {
-                <InputText id="btn btn-input" 
-                            class="form-control"
-                            placeholder="Type your message here..."
-                            aria-label="Message"
-                            @bind-Value="@messageDto.Text" />
-                <div class="input-group-append">
-                    <MudButton id="messageCreate" 
-                            class="btn btn-warning" 
-                            ButtonType="ButtonType.Submit"
-                            Variant="Variant.Filled" Color="Color.Primary">Send</MudButton>
-                </div>
+            {                
+                <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
+                    <MudTextField @bind-Value="@messageDto.Text" />
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Send</MudButton>
+                </MudButtonGroup>
             }
-        </div>
     </div>
 </EditForm>
 

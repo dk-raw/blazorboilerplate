@@ -77,6 +77,8 @@ html, body {
 
 .mud-drawer-header {
     background-color: #5D2E8F;
+    padding-bottom: 0;
+    padding-top: 0;
 }
 
 .drawer-logo {
@@ -102,15 +104,9 @@ html, body {
 }
 
     .drawer-profile a,
-    .drawer-profile .material-icons {
+    .drawer-profile .mud-icon-button-label {
         color: #fff;
-        vertical-align: text-bottom;
     }
-
-/*  forms */
-fieldset {
-    border: none;
-}
 
 hr {
     clear: both;

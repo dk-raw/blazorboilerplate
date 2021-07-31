@@ -7,37 +7,40 @@
 <CascadingValue Value="this">
     <MudLayout>
         <MudAppBar>
-            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" />
-            <SelectCulture />
-            <Login />
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+            <MudSpacer />
+            <div class="d-none d-md-flex align-center">
+                <SelectCulture />
+                <Login />
+            </div>
         </MudAppBar>
-        <MudDrawerHeader @bind-Open="@_navMenuOpened">
+        <MudDrawer @bind-Open="@_navMenuOpened">
             <MudDrawerHeader>
                 <div class="drawer-logo">
-                    <img alt="@appState.AppName" class="logo-img" src="_content/BlazorBoilerplate.Theme.Material/images/logo-dark.svg" title="@appState.AppName">
-                    <a class="miniHover" href="/">@appState.AppName</a>
+                    <img alt="@appState.AppName" class="logo-img" src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo-dark.svg" title="@appState.AppName">
+                    <a href="/">@appState.AppName</a>
                 </div>
-                <UserProfile />
             </MudDrawerHeader>
+            <UserProfile />
             <AdminNavMenu />
-        </MudDrawerHeader>
-        <MudMainContent>
-            @TopSection
-            @Body
-            <MudScrollToTop TopOffset="400" Style="z-index:2000;">
-                <MudFab Icon="@Icons.Material.Filled.KeyboardArrowUp" Color="Color.Primary" />
-            </MudScrollToTop>
+        </MudDrawer>
+        <MudMainContent Style="min-height: 100vh; display: flex; flex-direction: column">
+            <MudContainer MaxWidth="MaxWidth.False" Style="flex: 1">
+                @TopSection
+                @Body
+            </MudContainer>
             <footer class="page-footer">
                 <TenantInfo />
             </footer>
         </MudMainContent>
+        <MudScrollToTop TopOffset="400" Style="z-index:2000;">
+            <MudFab Icon="@Icons.Material.Filled.KeyboardArrowUp" Color="Color.Primary" />
+        </MudScrollToTop>
     </MudLayout>
 </CascadingValue>
 
 @code {
     bool _navMenuOpened = true;
-    bool _navMinified = false;
-    public string bbDrawerClass = "";
 
     [CascadingParameter]
     Task<AuthenticationState> authenticationStateTask { get; set; }
@@ -54,11 +57,10 @@
                 profile = new BlazorBoilerplate.Shared.Dto.Db.UserProfile();
 
             _navMenuOpened = profile.IsNavOpen;
-            _navMinified = profile.IsNavMinified;
         }
     }
 
-    void NavToggle()
+    private void DrawerToggle()
     {
         _navMenuOpened = !_navMenuOpened;
     }
