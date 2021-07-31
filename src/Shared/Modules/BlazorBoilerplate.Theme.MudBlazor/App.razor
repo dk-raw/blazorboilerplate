@@ -5,7 +5,7 @@
 @inject IStringLocalizer<Global> L
 
 
-<MudThemeProvider />
+<MudThemeProvider Theme="@mudTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -42,13 +42,23 @@
 
 @code
 {
+    MudTheme mudTheme = new MudTheme()
+    {
+        Palette = new Palette()
+        {
+            Primary = "#5D2E8F",
+            //Surface = "#ffffff",
+            AppbarBackground = "#5D2E8F",
+        }
+    };
+
     private async Task OnNavigateAsync(NavigationContext args)
     {
         if (navigationManager.IsWebAssembly())
             if (args.Path.Equals("admin", StringComparison.OrdinalIgnoreCase))
             {
                 var assemblies = await assemblyLoader.LoadAssembliesAsync(
-                    new List<string>() { "BlazorBoilerplate.Theme.Material.Admin.dll", "Blazored.TextEditor.dll" });
+                    new List<string>() { "BlazorBoilerplate.Theme.MudBlazor.Admin.dll", "Blazored.TextEditor.dll" });
 
                 ModuleProvider.AddModules(assemblies);
             }
