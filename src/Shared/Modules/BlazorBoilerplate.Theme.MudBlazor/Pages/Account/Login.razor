@@ -10,109 +10,104 @@
         </LoadingBackground>
     </Authorized>
     <NotAuthorized>
-        @if (loginViewModel?.EnableLocalLogin == true)
+        @if (loginViewModel == null)
         {
-            <MudCard Elevation="25">
-                <MudCardHeader>
-                    <div class="hidden-mdc-down">
-                        <MudIconButton Icon="@Icons.Filled.Home" Class="float-left" Link="/" />
-                    </div>
-                    <div class="logo">
-                        <a href="/" title="@appState.AppName Home"><img src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo.svg" style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
-                        <br />
-                        <h4>@L["Log in"]</h4>
-                    </div>
-                </MudCardHeader>
-                <MudCardContent>
-                    <EditForm Model="@loginViewModel" OnValidSubmit="@SubmitLogin">
-                        <FluentValidationValidator />
-                        <ValidationSummary />
-                        <fieldset>
-                            <div class="form-group">
-                                <MudTextField AutoFocus="true" @bind-Value="@loginViewModel.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Material.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true" tabindex="1"></MudTextField>
+            <LoadingBackground />
+        }
+        else
+        {
+            @if (loginViewModel.EnableLocalLogin)
+            {
+                <MudCard Elevation="25">
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            <MudIconButton Icon="@Icons.Filled.Home" Class="ml-auto" Link="/" />
+                            <div class="logo">
+                                <a href="/" title="@appState.AppName Home"><img src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo.svg" style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
+                                <br />
                             </div>
-                            <div class="form-group">
-                                <MudTextField @bind-Value="@loginViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password" tabindex="2"></MudTextField>
-                            </div>
-                            <div class="form-group">
-                                <MudButton class="float-right" Type="submit" tabindex="3">@L["Login"]</MudButton>
-                                @if (loginViewModel.AllowRememberLogin)
-                                {<MudCheckBox @bind-Checked="@loginViewModel.RememberMe" class="filled-in chk-col-blue">@L["Keep me logged in"]</MudCheckBox>}
-                            </div>
-                        </fieldset>
-                    </EditForm>
-                    <hr />
-                    <div>
-                        <MudButton class="float-left" OnClick="@Register">@L["Sign up"]</MudButton>
-                    </div>
-                </MudCardContent>
-            </MudCard>
-            <MudExpansionPanels>
-                <MudExpansionPanel @bind-Expanded="@forgotPasswordToggle">
-                    <TitleContent>
-                        @L["Forgot your password?"]
-                    </TitleContent>
-                    <ChildContent>
-                        <EditForm Model="@forgotPasswordViewModel" OnValidSubmit="@ForgotPassword">
+                            <MudText Typo="Typo.h5" Align="Align.Center">@L["Log in"]</MudText>
+                        </CardHeaderContent>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <EditForm Model="@loginViewModel" OnValidSubmit="@SubmitLogin">
                             <FluentValidationValidator />
                             <ValidationSummary />
-                            <div class="form-group">
-                                <MudTextField @bind-Value="@forgotPasswordViewModel.Email" Label=@L["Email"] AdornmentIcon="@Icons.Material.Outlined.Mail" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
-                            </div>
-                            <div class="form-group">
-                                <MudButton class="float-right" Type="submit">@L["Submit"]</MudButton>
-                            </div>
+                            <MudTextField AutoFocus="true" @bind-Value="@loginViewModel.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Material.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true" tabindex="1"></MudTextField>
+
+                            <MudTextField @bind-Value="@loginViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password" tabindex="2"></MudTextField>
+
+                            @if (loginViewModel.AllowRememberLogin)
+                            {<MudCheckBox @bind-Checked="@loginViewModel.RememberMe" Class="ml-n2">@L["Keep me logged in"]</MudCheckBox> <br />}
+
+                            <MudButton ButtonType="ButtonType.Submit" tabindex="3" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">@L["Login"]</MudButton>
                         </EditForm>
-                    </ChildContent>
-                </MudExpansionPanel>
-            </MudExpansionPanels>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton OnClick="@Register" Variant="Variant.Filled" Color="Color.Primary" Class="mr-auto">@L["Sign up"]</MudButton>
+                    </MudCardActions>
+                </MudCard>
+                <MudExpansionPanels>
+                    <MudExpansionPanel @bind-Expanded="@forgotPasswordToggle">
+                        <TitleContent>
+                            @L["Forgot your password?"]
+                        </TitleContent>
+                        <ChildContent>
+                            <EditForm Model="@forgotPasswordViewModel" OnValidSubmit="@ForgotPassword">
+                                <FluentValidationValidator />
+                                <ValidationSummary />
+                                    <MudTextField @bind-Value="@forgotPasswordViewModel.Email" Label=@L["Email"] AdornmentIcon="@Icons.Material.Outlined.Mail" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+                              
+                                    <MudButton Class="ml-auto" ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Submit"]</MudButton>
+                            </EditForm>
+                        </ChildContent>
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
+            }
             @if (loginViewModel.VisibleExternalProviders.Any())
             {
                 <br />
                 <MudCard>
-                    @if (!loginViewModel.EnableLocalLogin)
-                    {<div class="hidden-mdc-down">
-                            <MudIconButton Icon="@Icons.Filled.Home" Class="float-left" Link="/" />
-                        </div>}
-                    <div class="logo">
-                        @if (!loginViewModel.EnableLocalLogin)
-                        {<a href="/" title="@appState.AppName Home"><img src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo.svg" style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
-                        <br />}
-                        <h4>@L["Sign in with"]</h4>
-                    </div>
-                    <div style="text-align: center">
+                    <MudCardHeader>
+                        <CardHeaderContent>
+                            @if (!loginViewModel.EnableLocalLogin)
+                            {
+                                <MudIconButton Icon="@Icons.Filled.Home" Class="ml-auto" Link="/" />
+                                <div class="logo">
+                                    <a href="/" title="@appState.AppName Home"><img src="_content/BlazorBoilerplate.Theme.MudBlazor/images/logo.svg" style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
+                                    <br />
+                                </div>
+                            }
+                            <MudText Typo="Typo.h5" Align="Align.Center">@L["Sign in with"]</MudText>
+                        </CardHeaderContent>
+                    </MudCardHeader>
+                    <MudCardContent Class="d-flex flex-column">
                         @foreach (var provider in loginViewModel.VisibleExternalProviders)
                         {
                             @switch (provider.AuthenticationScheme)
                             {
                                 case "Google":
                                 case "Facebook":
-                                    <div class="form-group">
-                                        <MudButton Style="min-width: 140px;" OnClick="@(() => SignInWith(provider))"><img height="18" src="/images/@(provider.AuthenticationScheme.ToLower()).svg" /></MudButton>
-                                    </div>
+                                    <MudButton Class="signInWithButton" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => SignInWith(provider))"><img height="18" src="/images/@(provider.AuthenticationScheme.ToLower()).svg" /></MudButton>
                                     break;
                                 case "Twitter":
                                 case "Microsoft":
                                 case "Apple":
-                                    <div class="form-group">
-                                        <MudButton Style="min-width: 140px;" OnClick="@(() => SignInWith(provider))"><img height="18" src="/images/@(provider.AuthenticationScheme.ToLower()).svg" />&nbsp;@provider.DisplayName</MudButton>
-                                    </div>
+                                    <MudButton Class="signInWithButton" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => SignInWith(provider))"><img height="18" src="/images/@(provider.AuthenticationScheme.ToLower()).svg" />&nbsp;@provider.DisplayName</MudButton>
                                     break;
                                 default:
-                                    <div class="form-group">
-                                        <MudButton Style="min-width: 140px;" OnClick="@(() => SignInWith(provider))" Label="@provider.DisplayName" />
-                                    </div>
+                                    <MudButton Class="signInWithButton" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => SignInWith(provider))">@provider.DisplayName</MudButton>
                                     break;
                             }
                         }
-                    </div>
+                    </MudCardContent>
                 </MudCard>}
             @if (!loginViewModel.EnableLocalLogin && !loginViewModel.VisibleExternalProviders.Any())
             {
-                <div class="alert alert-warning">
+                <MudAlert Severity="Severity.Warning">
                     <strong>Invalid login request</strong>
                     There are no login schemes configured for this client.
-                </div>
+                </MudAlert>
             }
         }
     </NotAuthorized>

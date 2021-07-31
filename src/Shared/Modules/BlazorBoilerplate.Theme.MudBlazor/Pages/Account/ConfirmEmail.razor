@@ -23,7 +23,7 @@
                     <MudTextField @bind-Value="@confirmEmailViewModel.Token" Label="Token" AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                 </div>
                 <div class="form-group d-flex justify-content-end">
-                    <MudButton Type="submit" Disabled="@disableConfirmButton">@L["Send Confirmation"]</MudButton>
+                    <MudButton ButtonType="ButtonType.Submit" Disabled="@disableConfirmButton">@L["Send Confirmation"]</MudButton>
                 </div>
             </fieldset>
         </EditForm>

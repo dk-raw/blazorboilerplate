@@ -6,12 +6,12 @@
 <p>User profile management.</p>
 @if (userViewModel == null)
 {
-    <LoadingBackground></LoadingBackground>
+    <LoadingBackground />
 }
 else
 {
     <div class="form-group">
-        <MudButton Type="submit" form="mainForm" Variant="Variant.Filled" Color="Color.Primary">@L["Save"]</MudButton>
+        <MudButton ButtonType="ButtonType.Submit" form="mainForm" Variant="Variant.Filled" Color="Color.Primary">@L["Save"]</MudButton>
         @if (userViewModel.HasPassword)
         {
             <MudButton StartIcon="@Icons.Filled.RotateRight" OnClick="@(() => OpenUpdatePasswordDialog())" Label=@L["Change Password"] Style="margin-left: 10px"></MudButton>

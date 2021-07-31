@@ -35,7 +35,7 @@
                             <MudTextField AutoFocus="true" @bind-Value="@loginViewModel.TwoFactorCode" Label=@L["Code"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password" tabindex="1"></MudTextField>                            
                         </div>
                         <div class="form-group">
-                            <MudButton class="float-right" Type="submit" tabindex="2">@L["Login"]</MudButton>
+                            <MudButton class="float-right" ButtonType="ButtonType.Submit" tabindex="2">@L["Login"]</MudButton>
                             <MudCheckBox @bind-Checked="@loginViewModel.RememberMachine" class="filled-in chk-col-blue">@L["RememberBrowser"]</MudCheckBox>
                         </div>
                     </fieldset>
@@ -54,7 +54,7 @@
                                 <MudTextField @bind-Value="@forgotAuthenticatorInputModel.RecoveryCode" Label=@L["RecoveryCode"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
                             </div>
                             <div class="form-group">
-                                <MudButton class="float-right" Type="submit">@L["Login"]</MudButton>
+                                <MudButton class="float-right" ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Login"]</MudButton>
                             </div>
                         </EditForm>
                     </ChildContent>

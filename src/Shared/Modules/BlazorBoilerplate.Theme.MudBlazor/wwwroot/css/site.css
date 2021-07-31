@@ -116,15 +116,14 @@ hr {
     clear: both;
 }
 
-.selectCulture
-{
+.selectCulture {
     min-width: 120px;
     margin-top: -16px;
 }
 
-.selectCulture .mud-input {
-    color: #fff;
-}
+    .selectCulture .mud-input {
+        color: #fff;
+    }
 
 /** Simple drag and drop with Blazor CSS **/
 .jobs-container {
@@ -192,27 +191,17 @@ hr {
         font-size: 11px;
     }
 
-/* misc */
-.contrib-card {
-    padding: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-    .contrib-card img {
-        height: 50px;
-        width: 50px;
-    }
-
-.invalid {
-    outline: 1px solid red;
+.signInWithButton {
+    margin: 8px;
+    padding: 8px;
+    height: 40px;
 }
 
 .validation-message {
     color: red;
 }
 
-#blazor-error-ui::before{
+#blazor-error-ui::before {
     margin: auto;
 }
 
@@ -224,7 +213,7 @@ hr {
 }
 
 #blazor-error-ui {
-    z-index:9999;
+    z-index: 9999;
     display: none;
     background: #fff;
     margin: 0 auto;
@@ -246,6 +235,7 @@ hr {
     .logo-img {
         height: 38px;
     }
+
     .donate span {
         display: none;
     }

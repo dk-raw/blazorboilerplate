@@ -29,7 +29,7 @@
                 <MudTextField @bind-Value="@registerViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
             </div>
             <div class="form-group d-flex justify-content-end">
-                <MudButton Type="submit">@L["Register"]</MudButton>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Register"]</MudButton>
             </div>
             <hr />
             <NavLink href="account/login">
