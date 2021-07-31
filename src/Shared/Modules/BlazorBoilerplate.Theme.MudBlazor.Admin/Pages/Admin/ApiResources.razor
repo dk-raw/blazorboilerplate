@@ -24,7 +24,7 @@ else
 {
     <MudTable Class="mat-elevation-z5" Items="@apiResources" Striped="true">
         <HeaderContent>
-            <MudTh><MudButton Icon="@Icons.Filled.Add" Label=@L["New API Resource"] OnClick="@(() => OpenUpsertApiResourceDialog())"></MudButton></MudTh>
+            <MudTh><MudButton StartIcon="@Icons.Filled.Add" Label=@L["New API Resource"] OnClick="@(() => OpenUpsertApiResourceDialog())"></MudButton></MudTh>
             <MudTh>@L["Name"]</MudTh>
             <MudTh>Enabled</MudTh>
             <MudTh>Display Name</MudTh>
@@ -107,7 +107,7 @@ else
                 <MudTabPanel Text="Secrets">
                     <MudTable Items="@currentApiResource.ApiSecrets">
                         <HeaderContent>
-                            <MudTh style="min-width:190px;"><MudButton Icon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateApiResourceSecretDialogOpen())"></MudButton></MudTh>
+                            <MudTh style="min-width:190px;"><MudButton StartIcon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateApiResourceSecretDialogOpen())"></MudButton></MudTh>
                             <MudTh>Expiration</MudTh>
                             <MudTh>Description</MudTh>
                         </HeaderContent>

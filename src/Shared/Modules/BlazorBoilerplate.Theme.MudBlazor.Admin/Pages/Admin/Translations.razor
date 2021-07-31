@@ -71,15 +71,15 @@ else
                 <div class="form-group">
                     <MudSelect @bind-Value="@newLocalizationRecord.Culture" Items="@LocalizationCultures" Label=@L["Culture"]></MudSelect>
                     <MudTextField @bind-Value="@newLocalizationRecord.Translation" Label=@L["Translation"] FullWidth="true" TextArea="true" Style="resize: both"></MudTextField>
-                    <MudButton Type="submit" Raised="true">@L["Add"]</MudButton>
-                    <MudButton Raised="true" OnClick="@(() => OpenEditAsHtmlDialog(newLocalizationRecord))">@L["Edit as HTML"]</MudButton>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Add"]</MudButton>
+                    <MudButton OnClick="@(() => OpenEditAsHtmlDialog(newLocalizationRecord))" Variant="Variant.Filled" Color="Color.Primary">@L["Edit as HTML"]</MudButton>
                 </div>
             </fieldset>
         </EditForm>}
 
-    <MudButton OnClick="@CancelChanges" Raised="true">@L["Cancel"]</MudButton>
-    <MudButton OnClick="@SaveChanges" Raised="true">@L["Save"]</MudButton>
-    <MudButton OnClick="@ReloadTranslations" Raised="true">@L["ReloadTranslations"]</MudButton>
+    <MudButton OnClick="@CancelChanges">@L["Cancel"]</MudButton>
+    <MudButton OnClick="@SaveChanges" Variant="Variant.Filled" Color="Color.Primary">@L["Save"]</MudButton>
+    <MudButton OnClick="@ReloadTranslations">@L["ReloadTranslations"]</MudButton>
     <div>
         <MudButton Style="margin-top: 5px" OnClick="@(e => { navigationManager.NavigateTo("/api/localization/export", true); })" Raised="true">@L["Export"]</MudButton>
 
@@ -106,7 +106,7 @@ else
         </DialogContent>
         <DialogActions>
             <MudButton OnClick="@(e => { isEditDialogOpen = false; })">@L["Cancel"]</MudButton>
-            <MudButton OnClick="@(()=>EditLocalizationRecordKey())">@L["Save"]</MudButton>
+            <MudButton OnClick="@(()=>EditLocalizationRecordKey())" Variant="Variant.Filled" Color="Color.Primary">@L["Save"]</MudButton>
         </DialogActions>
     </MudDialog>
 
@@ -145,7 +145,7 @@ else
         </DialogContent>
         <DialogActions>
             <MudButton OnClick="@CancelChanges">@L["Cancel"]</MudButton>
-            <MudButton Type="submit" form="newKeyForm" Raised="true">@L["Save"]</MudButton>
+            <MudButton ButtonType="ButtonType.Submit" form="newKeyForm" Variant="Variant.Filled" Color="Color.Primary">@L["Save"]</MudButton>
         </DialogActions>
     </MudDialog>
 
@@ -180,14 +180,14 @@ else
                         <div class="form-group">
                             <MudTextField @bind-Value="@newPlural.Index" Label=@L["Index"] FullWidth="true"></MudTextField>
                             <MudTextField @bind-Value="@newPlural.Translation" Label=@L["Translation"] FullWidth="true" TextArea="true" Style="resize: both"></MudTextField>
-                            <MudButton Type="submit" Raised="true">@L["Add"]</MudButton>
+                            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Add"]</MudButton>
                         </div>
                     </fieldset>
                 </EditForm>}
         </DialogContent>
         <DialogActions>
             <MudButton OnClick="@CancelPluralChanges">@L["Cancel"]</MudButton>
-            <MudButton OnClick="@SavePluralChanges" Raised="true">@L["Save"]</MudButton>
+            <MudButton OnClick="@SavePluralChanges" Variant="Variant.Filled" Color="Color.Primary">@L["Save"]</MudButton>
         </DialogActions>
     </MudDialog>
 

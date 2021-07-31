@@ -23,7 +23,7 @@ else
 {
     <MudTable Class="mat-elevation-z5" Items="@clients" Striped="true">
         <HeaderContent>
-            <MudTh><MudButton Icon="@Icons.Filled.Add" Label=@L["New Client"] OnClick="@(() => OpenUpsertClientDialog())"></MudButton></MudTh>
+            <MudTh><MudButton StartIcon="@Icons.Filled.Add" Label=@L["New Client"] OnClick="@(() => OpenUpsertClientDialog())"></MudButton></MudTh>
             <MudTh>Id</MudTh>
             <MudTh>Enabled</MudTh>
             <MudTh>Access Token Lifetime</MudTh>
@@ -106,7 +106,7 @@ else
                     </fieldset>
                     <MudTable Items="@currentClient.ClientSecrets" style="@(currentClient.RequireClientSecret ? "" : "display:none;")">
                         <HeaderContent>
-                            <MudTh style="min-width:190px;"><MudButton Icon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateClientSecretDialogOpen())"></MudButton></MudTh>
+                            <MudTh style="min-width:190px;"><MudButton StartIcon="@Icons.Filled.Add" Label="New Secret" OnClick="@(() => OpenCreateClientSecretDialogOpen())"></MudButton></MudTh>
                             <MudTh>Expiration</MudTh>
                             <MudTh>Description</MudTh>
                         </HeaderContent>

@@ -40,12 +40,12 @@ else
                     <MudSelect @bind-Value="@newPluralFormRule.Language" Items="@LocalizationCultures" Label=@L["Culture"]></MudSelect>
                     <MudTextField @bind-Value="@newPluralFormRule.Count" Label=@L["Count"] FullWidth="true" Required="true"></MudTextField>
                     <MudTextField @bind-Value="@newPluralFormRule.Selector" Label=@L["Selector"] FullWidth="true" Required="true"></MudTextField>
-                    <MudButton Type="submit" Raised="true">@L["Add"]</MudButton>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Add"]</MudButton>
                 </div>
             </fieldset>
         </EditForm>}
-    <MudButton OnClick="@CancelChanges" Raised="true">@L["Cancel"]</MudButton>
-    <MudButton OnClick="@SaveChanges" Raised="true">@L["Save"]</MudButton>
+    <MudButton OnClick="@CancelChanges">@L["Cancel"]</MudButton>
+    <MudButton OnClick="@SaveChanges" Variant="Variant.Filled" Color="Color.Primary">@L["Save"]</MudButton>
 }
 
 @code {

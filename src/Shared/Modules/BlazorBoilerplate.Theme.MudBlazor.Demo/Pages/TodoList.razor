@@ -100,7 +100,9 @@
             </MudGrid>
         </ItemContent>
         <Placeholder>
-            <div>...</div>
+            <div style="border-bottom: 1px solid #eee;">
+                <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+            </div>
         </Placeholder>
     </Virtualize>
 </div>
@@ -124,7 +126,7 @@
         </DialogContent>
         <DialogActions>
             <MudButton OnClick="@(e => { dialogIsOpen = false; })">@L["Cancel"]</MudButton>
-            <MudButton Type="submit" form="newTodoForm" Raised="true">Create Todo</MudButton>
+            <MudButton ButtonType="ButtonType.Submit" form="newTodoForm" Variant="Variant.Filled" Color="Color.Primary">Create Todo</MudButton>
         </DialogActions>
     </MudDialog>
 
@@ -206,7 +208,7 @@
 
     private int itemCount = 0;
 
-    private Todo currentTodo;
+    private Todo currentTodo = new();
 
     protected override async Task OnInitializedAsync()
     {
