@@ -75,7 +75,18 @@
     </MudItem>
 </MudGrid>
 
-<div style="margin: 20px; font-weight: bold; font-size: 18px">Item Count: @itemCount</div>
+@{
+#if DEBUG
+    {
+        <div style="margin: 20px; font-weight: bold; font-size: 18px">Total item Count: @itemCount - Start index: @startIndex - Page size: @pageSize</div>
+    }
+#else
+    {
+    <div style="margin: 20px; font-weight: bold; font-size: 18px">Total item Count: @itemCount</div>
+    }
+#endif
+}
+
 
 <MudGrid Style="font-weight:bold;background-color:#ddd;margin:0" Class="align-center">
     <MudItem xs="2">
@@ -206,7 +217,13 @@
     private bool deleteDialogOpen = false;
     private bool dialogIsOpen = false;
 
-    private int itemCount = 0;
+    private int itemCount;
+
+
+#if DEBUG
+    private int startIndex;
+    private int pageSize;
+#endif
 
     private Todo currentTodo = new();
 
@@ -276,14 +293,23 @@
 
     private async ValueTask<ItemsProviderResult<Todo>> LoadToDos(ItemsProviderRequest request)
     {
+#if DEBUG
+        startIndex = request.StartIndex;
+        pageSize = request.Count;
+#endif
+
         var items = await apiClient.GetToDos(filter,
-            request.Count,
-            request.StartIndex);
+        request.Count,
+        request.StartIndex);
 
         itemCount = (int)items.InlineCount;
 
         if (request.StartIndex == 0)
             StateHasChanged();
+
+#if DEBUG
+        StateHasChanged();
+#endif
 
         return new ItemsProviderResult<Todo>(items, itemCount);
     }
