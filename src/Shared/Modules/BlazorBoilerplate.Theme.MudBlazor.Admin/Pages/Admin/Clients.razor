@@ -21,7 +21,7 @@
 }
 else
 {
-    <MudTable Class="mat-elevation-z5" Items="@clients" Striped="true">
+    <MudTable Items="@clients" Striped="true">
         <HeaderContent>
             <MudTh><MudButton StartIcon="@Icons.Filled.Add" Label=@L["New Client"] OnClick="@(() => OpenUpsertClientDialog())"></MudButton></MudTh>
             <MudTh>Id</MudTh>
@@ -159,7 +159,7 @@ else
                 <MudTabPanel Text="Authentication / Logout">
                     <fieldset>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.PostLogoutRedirectUrisText" Label="Post Logout Redirect Uris" AdornmentIcon="@Icons.Filled.Link" Adornment="Adornment.End" TextArea="true" FullWidth="true" Required="false"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.PostLogoutRedirectUrisText" Label="Post Logout Redirect Uris" AdornmentIcon="@Icons.Filled.Link" Adornment="Adornment.End" Lines="5" FullWidth="true" Required="false"></MudTextField>
                         </div>
                         <div class="form-group">
                             <MudTextField @bind-Value="@currentClient.FrontChannelLogoutUri" Label="Front Channel Logout Uri" AdornmentIcon="@Icons.Filled.Link" Adornment="Adornment.End" FullWidth="true"></MudTextField>
@@ -177,7 +177,7 @@ else
                             <MudSwitch @bind-Checked="@currentClient.EnableLocalLogin" Label="Enable Local Login"></MudSwitch>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.IdentityProviderRestrictionsText" Label="Identity Provider Restrictions" AdornmentIcon="@Icons.Filled.Link" Adornment="Adornment.End" TextArea="true" FullWidth="true" Required="false"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.IdentityProviderRestrictionsText" Label="Identity Provider Restrictions" AdornmentIcon="@Icons.Filled.Link" Adornment="Adornment.End" Lines="5" FullWidth="true" Required="false"></MudTextField>
                         </div>
                         <div class="form-group">
                             <MudTextField @bind-Value="@currentClient.UserSsoLifetime" Label="User Sso Lifetime  in seconds" AdornmentIcon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
@@ -223,10 +223,10 @@ else
                             <MudSwitch @bind-Checked="@currentClient.IncludeJwtId" Label="Include Jwt Id"></MudSwitch>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.AllowedCorsOriginsText" Label="Allowed Cors Origins" AdornmentIcon="@Icons.Filled.Link" Adornment="Adornment.End" TextArea="true" FullWidth="true" Required="false"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.AllowedCorsOriginsText" Label="Allowed Cors Origins" AdornmentIcon="@Icons.Filled.Link" Adornment="Adornment.End" Lines="5" FullWidth="true" Required="false"></MudTextField>
                         </div>
                         <div class="form-group">
-                            <MudTextField @bind-Value="@currentClient.RedirectUrisText" Label="Redirect Uris" AdornmentIcon="@Icons.Filled.Link" Adornment="Adornment.End" TextArea="true" FullWidth="true" Required="false"></MudTextField>
+                            <MudTextField @bind-Value="@currentClient.RedirectUrisText" Label="Redirect Uris" AdornmentIcon="@Icons.Filled.Link" Adornment="Adornment.End" Lines="5" FullWidth="true" Required="false"></MudTextField>
                         </div>
                     </fieldset>
                     <h3 class="mat-subtitle1">Allowed Identity Token Signing Algorithms</h3>

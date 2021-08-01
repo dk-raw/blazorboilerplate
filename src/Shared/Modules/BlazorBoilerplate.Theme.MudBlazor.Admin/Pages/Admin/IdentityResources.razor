@@ -21,7 +21,7 @@
 }
 else
 {
-    <MudTable Class="mat-elevation-z5" Items="@identityResources" Striped="true">
+    <MudTable Items="@identityResources" Striped="true">
         <HeaderContent>
             <MudTh><MudButton StartIcon="@Icons.Filled.Add" Label=@L["New Identity Resource"] OnClick="@(() => OpenUpsertIdentityResourceDialog())"></MudButton></MudTh>
             <MudTh>@L["Name"]</MudTh>
@@ -97,7 +97,7 @@ else
                     <fieldset>
                         <div class="form-group" style="margin-top:16px;">
                             <div class="form-group">
-                                <MudTextField @bind-Value="@currentIdentityResource.CustomUserClaimsText" Label="Custom User Claims" TextArea="true" FullWidth="true" Required="false"></MudTextField>
+                                <MudTextField @bind-Value="@currentIdentityResource.CustomUserClaimsText" Label="Custom User Claims" Lines="5" FullWidth="true" Required="false"></MudTextField>
                             </div>
                         </div>
                     </fieldset>

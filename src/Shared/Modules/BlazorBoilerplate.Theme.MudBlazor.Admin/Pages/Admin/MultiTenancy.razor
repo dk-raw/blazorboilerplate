@@ -21,7 +21,7 @@
 }
 else
 {
-    <MudTable Class="mat-elevation-z5" Items="@tenants" Striped="true">
+    <MudTable Items="@tenants" Striped="true">
         <HeaderContent>
             <MudTh><MudButton StartIcon="@Icons.Filled.Add" Label=@L["New Tenant"] OnClick="@(() => OpenUpsertTenantDialog())"></MudButton></MudTh>
             <MudTh>Id</MudTh>
@@ -71,7 +71,7 @@ else
                     <MudTextField @bind-Value="@currentTenant.Name" Label=@L["Name"] AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
                 </div>
                 <div class="form-group">
-                    <MudTextField @bind-Value="@currentTenant.ConnectionString" Label="ConnectionString" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" TextArea="true"></MudTextField>
+                    <MudTextField @bind-Value="@currentTenant.ConnectionString" Label="ConnectionString" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Lines="5"></MudTextField>
                 </div>
             </fieldset>
         </EditForm>

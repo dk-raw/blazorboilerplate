@@ -30,7 +30,7 @@ else
         <MudSelectItem Value="@item">@item</MudSelectItem>
     }
 </MudSelect>
-<MudTable Items="@dbLogItems" Class="mat-elevation-z5" Striped="true">
+<MudTable ServerData="@(new Func<TableState, Task<TableData<DbLog>>>(ServerReload))" Striped="true" Dense="true" Hover="true">
     <HeaderContent>
         <MudTh>Timestamp</MudTh>
         <MudTh>Logging Level</MudTh>
@@ -62,4 +62,10 @@ else
 }
 
 @code {
+    private async Task<TableData<DbLog>> ServerReload(TableState state)
+    {
+        await OnPage(state.Page, state.PageSize);
+
+        return new TableData<DbLog>() { TotalItems = totalItemsCount, Items = dbLogItems };
+    }
 }
