@@ -40,6 +40,8 @@ namespace BlazorBoilerplate.UI.Base.Pages.Admin
         protected bool isPluralDialogOpen = false;
         protected bool isEditAsHtmlDialogOpen = false;
 
+        protected string filter;
+
         protected LocalizationRecordKey currentKey { get; set; }
         protected LocalizationRecordKey newKey { get; set; } = new LocalizationRecordKey();
 
@@ -64,7 +66,7 @@ namespace BlazorBoilerplate.UI.Base.Pages.Admin
 
             await LoadKeys();
         }
-        protected async Task LoadKeys(string filter = null)
+        protected async Task LoadKeys()
         {
             localizationRecords = new List<LocalizationRecord>();
 

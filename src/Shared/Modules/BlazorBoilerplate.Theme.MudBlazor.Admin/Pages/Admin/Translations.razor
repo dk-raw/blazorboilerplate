@@ -15,8 +15,14 @@
 }
 else
 {
-    <MudTextField ValueChanged="(string filter) => LoadKeys(filter)" AdornmentIcon="@Icons.Filled.Search" />
-    <MudTable ServerData="@(new Func<TableState, Task<TableData<LocalizationRecordKey>>>(ServerReload))" Striped="true" Dense="true" Hover="true" SelectedItemChanged="async (LocalizationRecordKey key) => await LoadLocalizationRecords((LocalizationRecordKey)key)">
+    <MudGrid Class="my-4">
+        <MudItem xs="12" sm="4" md="2">
+            <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder=@L["Search"] Adornment="Adornment.End" AdornmentIcon="@Icons.Filled.Search" AdornmentColor="Color.Secondary" />
+        </MudItem>
+    </MudGrid>
+
+    <MudTable ServerData="@(new Func<TableState, Task<TableData<LocalizationRecordKey>>>(ServerReload))" Striped="true" Dense="true" Hover="true"
+              SelectedItemChanged="async (LocalizationRecordKey key) => await LoadLocalizationRecords((LocalizationRecordKey)key)" @ref="table">
         <HeaderContent>
             <MudTh><MudButton StartIcon="@Icons.Filled.Add" OnClick="@OpenNewKeyDialogOpen">@L["NewTranslation"]</MudButton></MudTh>
             <MudTh>@L["MsgId"]</MudTh>
@@ -56,7 +62,7 @@ else
             </MudTd>
             <MudTd>
                 <div>
-                    <MudButton Style="margin-bottom: 5px; white-space: nowrap"  Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditAsHtmlDialog(row))">@L["Edit as HTML"]</MudButton>
+                    <MudButton Style="margin-bottom: 5px; white-space: nowrap" Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => OpenEditAsHtmlDialog(row))">@L["Edit as HTML"]</MudButton>
                     <MudButton Variant="@(row.PluralTranslations.Count == 0 ? Variant.Outlined : Variant.Filled)" OnClick="@(() => OpenPluralDialog(row))">@L["Plural"]</MudButton>
                 </div>
             </MudTd>
@@ -228,6 +234,7 @@ else
 
 @code {
     BlazoredTextEditor HtmlEditor;
+    private MudTable<LocalizationRecordKey> table;
 
     protected override void SetHTML(string html)
     {
@@ -246,5 +253,11 @@ else
         await OnPage(state.Page, state.PageSize);
 
         return new TableData<LocalizationRecordKey>() { TotalItems = totalItemsCount, Items = localizationRecordKeys };
+    }
+
+    private void OnSearch(string text)
+    {
+        filter = text;
+        table.ReloadServerData();
     }
 }

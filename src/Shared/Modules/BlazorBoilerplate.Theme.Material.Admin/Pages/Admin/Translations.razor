@@ -15,7 +15,7 @@
 }
 else
 {
-    <MatTextField ValueChanged="(string filter) => LoadKeys(filter)" Icon="search" />
+    <MatTextField ValueChanged="(string filter) => OnSearch(filter)" Icon="search" />
     <MatTable Items="@localizationRecordKeys" Class="mat-elevation-z5" Striped="true" PageSize="@pageSize" ShowPaging="false"
               AllowSelection="true" SelectionChanged="async (object key) => await LoadLocalizationRecords((LocalizationRecordKey)key)">
         <MatTableHeader>
@@ -236,5 +236,11 @@ else
     async Task UploadMat(IMatFileUploadEntry[] files)
     {
         await Upload(files.Select(e => new FileUploadEntry(e)));
+    }
+
+    private async Task OnSearch(string text)
+    {
+        filter = text;
+        await LoadKeys();
     }
 }
