@@ -5,7 +5,7 @@
 @inject IApiClient apiClient
 @inject IViewNotifier viewNotifier
 
-<h1>Send Email</h1>
+<PageTitle>Send Email</PageTitle>
 <p>Test out SMTP email sending with MailKit. This will send out an email using a default "Test" template.</p>
 <EditForm Model="@emailParameters" OnValidSubmit="@SendTestEmail">
     <FluentValidationValidator />
