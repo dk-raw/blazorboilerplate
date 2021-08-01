@@ -27,8 +27,13 @@ namespace BlazorBoilerplate.Theme.Material.Services
                     break;
             }
 
-            snackbar.Add(message, snackType, config => { 
-                config.Icon = icon;
+            if (!string.IsNullOrWhiteSpace(title))
+                message = $"<b>{title}</b><br />{message}";
+
+            snackbar.Add(message, snackType, config =>
+            {
+                if (icon != null)
+                    config.Icon = icon;
             });
         }
     }

@@ -33,9 +33,9 @@ namespace BlazorBoilerplate.Theme.Material
 
             services.AddMudServices(config =>
             {
-                config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
+                config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
 
-                config.SnackbarConfiguration.PreventDuplicates = false;
+                config.SnackbarConfiguration.PreventDuplicates = true;
                 config.SnackbarConfiguration.NewestOnTop = false;
                 config.SnackbarConfiguration.ShowCloseIcon = true;
                 config.SnackbarConfiguration.VisibleStateDuration = 10000;
