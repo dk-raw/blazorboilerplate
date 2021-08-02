@@ -22,11 +22,8 @@ else
     <EditForm Model="@settings">
         <FluentValidationValidator />
         <ValidationSummary />
-        <fieldset>
-            <div class="form-group">
-                <MudSelect @bind-Value="@settings[SettingKey.MainConfiguration_Runtime].Value" Items="@BlazorRuntimes" Label="@L["Blazor Runtime"]"></MudSelect>
-            </div>
-        </fieldset>
+        <MudSelect @bind-Value="@settings[SettingKey.MainConfiguration_Runtime].Value" Items="@BlazorRuntimes" Label="@L["Blazor Runtime"]"></MudSelect>
+
     </EditForm>
 
     <MudButton OnClick="@(()=>apiClient.CancelChanges())">@L["Cancel"]</MudButton>

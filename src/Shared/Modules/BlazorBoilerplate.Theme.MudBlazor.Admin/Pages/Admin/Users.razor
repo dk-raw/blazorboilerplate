@@ -20,9 +20,9 @@
 }
 else
 {
-    <MudTable ServerData="@(new Func<TableState, Task<TableData<ApplicationUser>>>(ServerReload))" Striped="true" Dense="true" Hover="true">
+    <MudTable ServerData="@(new Func<TableState, Task<TableData<ApplicationUser>>>(ServerReload))" Striped="true" Bordered="true" Dense="true" Hover="true" Elevation="2">
         <HeaderContent>
-            <MudTh><MudButton StartIcon="@Icons.Filled.PersonAdd" Label=@L["New User"] OnClick="@(e => { createUserDialogOpen = true; })"></MudButton></MudTh>
+            <MudTh><MudButton StartIcon="@Icons.Filled.PersonAdd" OnClick="@(e => { createUserDialogOpen = true; })">@L["New User"]</MudButton></MudTh>
             <MudTh>@L["UserName"]</MudTh>
             <MudTh>@L["Email"]</MudTh>
             <MudTh>@L["Roles"]</MudTh>
@@ -62,20 +62,13 @@ else
         <EditForm id="createUserForm" Model="@newUserViewModel" OnValidSubmit="@CreateUserAsync">
             <FluentValidationValidator />
             <ValidationSummary />
-            <fieldset>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@newUserViewModel.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
-                </div>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@newUserViewModel.Email" Label=@L["Email"] AdornmentIcon="@Icons.Outlined.Email" Adornment="Adornment.End" FullWidth="true" Required="true" Type="mail"></MudTextField>
-                </div>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@newUserViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" Type="password"></MudTextField>
-                </div>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@newUserViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" Type="password"></MudTextField>
-                </div>
-            </fieldset>
+            <MudTextField @bind-Value="@newUserViewModel.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+
+            <MudTextField @bind-Value="@newUserViewModel.Email" Label=@L["Email"] AdornmentIcon="@Icons.Outlined.Email" Adornment="Adornment.End" FullWidth="true" Required="true" Type="mail"></MudTextField>
+
+            <MudTextField @bind-Value="@newUserViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
+
+            <MudTextField @bind-Value="@newUserViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
         </EditForm>
     </DialogContent>
     <DialogActions>
@@ -90,20 +83,16 @@ else
         <EditForm id="updateUserForm" Model="@currentUser" OnValidSubmit="@UpdateUserAsync">
             <FluentValidationValidator />
             <ValidationSummary />
-            <fieldset>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@currentUser.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
-                </div>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@currentUser.Email" Label=@L["Email"] AdornmentIcon="@Icons.Outlined.Email" Adornment="Adornment.End" FullWidth="true" Required="true" Type="mail"></MudTextField>
-                </div>
-                <MudChipSet>
-                    @foreach (var role in roleSelections.OrderBy(x => x.DisplayValue))
-                    {
-                        <MudChip Text="@role.DisplayValue" Icon="@((role.Selected) ? Icons.Filled.Done : "")" @onclick="@(()=>UpdateUserRole(role))" />
-                    }
-                </MudChipSet>
-            </fieldset>
+            <MudTextField @bind-Value="@currentUser.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+
+            <MudTextField @bind-Value="@currentUser.Email" Label=@L["Email"] AdornmentIcon="@Icons.Outlined.Email" Adornment="Adornment.End" FullWidth="true" Required="true" Type="mail"></MudTextField>
+
+            <MudChipSet>
+                @foreach (var role in roleSelections.OrderBy(x => x.DisplayValue))
+                {
+                    <MudChip Text="@role.DisplayValue" Icon="@((role.Selected) ? Icons.Filled.Done : "")" @onclick="@(()=>UpdateUserRole(role))" />
+                }
+            </MudChipSet>
         </EditForm>
     </DialogContent>
     <DialogActions>
@@ -129,14 +118,9 @@ else
         <EditForm id="changePasswordForm" Model="@changePasswordViewModel" OnValidSubmit="@ResetUserPasswordAsync">
             <FluentValidationValidator />
             <ValidationSummary />
-            <fieldset>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@changePasswordViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" Type="password"></MudTextField>
-                </div>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@changePasswordViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" Type="password"></MudTextField>
-                </div>
-            </fieldset>
+            <MudTextField @bind-Value="@changePasswordViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
+
+            <MudTextField @bind-Value="@changePasswordViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
         </EditForm>
     </DialogContent>
     <DialogActions>

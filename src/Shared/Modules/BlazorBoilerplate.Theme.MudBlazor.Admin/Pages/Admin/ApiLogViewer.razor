@@ -27,7 +27,7 @@
 }
 else
 {
-    <MudTable ServerData="@(new Func<TableState, Task<TableData<ApiLogItem>>>(ServerReload))" Striped="true" Dense="true" Hover="true">
+    <MudTable ServerData="@(new Func<TableState, Task<TableData<ApiLogItem>>>(ServerReload))" Striped="true" Bordered="true" Dense="true" Hover="true" Elevation="2">
         <HeaderContent>
             <MudTh><div style="width:175px;"><MudFab Icon="@Icons.Filled.Refresh" OnClick="@(() => LoadData())" Raised="true" Mini="true" Style="margin-right:16px;"></MudFab> Date / Time</div></MudTh>
             <MudTh>Http Code</MudTh>

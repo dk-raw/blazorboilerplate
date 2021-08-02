@@ -20,9 +20,9 @@
 }
 else
 {
-    <MudTable Items="@roles" Striped="true">
+    <MudTable Items="@roles" Striped="true" Bordered="true" Dense="true" Hover="true" Elevation="2">
         <HeaderContent>
-            <MudTh><MudButton StartIcon="@Icons.Filled.Add" Label=@L["New Role"] OnClick="@(() => OpenUpsertRoleDialog())"></MudButton></MudTh>
+            <MudTh><MudButton StartIcon="@Icons.Filled.Add" OnClick="@(() => OpenUpsertRoleDialog())">@L["New Role"]</MudButton></MudTh>
             <MudTh>@L["Name"]</MudTh>
             <MudTh>@L["Permissions"]</MudTh>
         </HeaderContent>
@@ -49,11 +49,8 @@ else
         @labelUpsertDialogTitle
     </TitleContent>
     <DialogContent>
-        <fieldset>
-            <div class="form-group">
-                <MudTextField @bind-Value="@currentRoleName" Disabled="@isCurrentRoleReadOnly" Label="Role Name" AdornmentIcon="@Icons.Filled.Add" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
-            </div>
-        </fieldset>
+        <MudTextField @bind-Value="@currentRoleName" Disabled="@isCurrentRoleReadOnly" Label="Role Name" AdornmentIcon="@Icons.Filled.Add" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+
         <MudTable Items="@permissionsSelections">
             <HeaderContent>
                 <MudTh>@L["Permissions"]</MudTh>

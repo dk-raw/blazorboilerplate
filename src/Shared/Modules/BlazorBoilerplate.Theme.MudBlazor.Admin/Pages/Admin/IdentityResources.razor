@@ -21,9 +21,9 @@
 }
 else
 {
-    <MudTable Items="@identityResources" Striped="true">
+    <MudTable Items="@identityResources" Striped="true" Bordered="true" Dense="true" Hover="true" Elevation="2">
         <HeaderContent>
-            <MudTh><MudButton StartIcon="@Icons.Filled.Add" Label=@L["New Identity Resource"] OnClick="@(() => OpenUpsertIdentityResourceDialog())"></MudButton></MudTh>
+            <MudTh><MudButton StartIcon="@Icons.Filled.Add" OnClick="@(() => OpenUpsertIdentityResourceDialog())">@L["New Identity Resource"]</MudButton></MudTh>
             <MudTh>@L["Name"]</MudTh>
             <MudTh>Enabled</MudTh>
             <MudTh>Display Name</MudTh>
@@ -69,38 +69,25 @@ else
             <ValidationSummary />
             <MudTabs>
                 <MudTabPanel Text="Main">
-                    <fieldset>
-                        <div class="form-group">
-                            <MudTextField @bind-Value="@currentIdentityResource.Name" Disabled="@isCurrentIdentityContextIdReadOnly" Label="Id" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
-                        </div>
-                        <div class="form-group">
-                            <MudSwitch @bind-Checked="@currentIdentityResource.Enabled" Label="Enabled"></MudSwitch>
-                        </div>
-                        <div class="form-group">
-                            <MudTextField @bind-Value="@currentIdentityResource.DisplayName" Label="Display Name" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
-                        </div>
-                        <div class="form-group">
-                            <MudTextField @bind-Value="@currentIdentityResource.Description" Label="Description" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
-                        </div>
-                        <div class="form-group">
-                            <MudSwitch @bind-Checked="@currentIdentityResource.Required" Label="Required"></MudSwitch>
-                        </div>
-                        <div class="form-group">
-                            <MudSwitch @bind-Checked="@currentIdentityResource.Emphasize" Label="Emphasize in consent screen"></MudSwitch>
-                        </div>
-                        <div class="form-group">
-                            <MudSwitch @bind-Checked="@currentIdentityResource.ShowInDiscoveryDocument" Label="Show in discovery document"></MudSwitch>
-                        </div>
-                    </fieldset>
+                    <MudTextField @bind-Value="@currentIdentityResource.Name" Disabled="@isCurrentIdentityContextIdReadOnly" Label="Id" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+
+                    <MudSwitch @bind-Checked="@currentIdentityResource.Enabled" Label="Enabled"></MudSwitch>
+
+                    <MudTextField @bind-Value="@currentIdentityResource.DisplayName" Label="Display Name" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+
+                    <MudTextField @bind-Value="@currentIdentityResource.Description" Label="Description" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+
+                    <MudSwitch @bind-Checked="@currentIdentityResource.Required" Label="Required"></MudSwitch>
+
+                    <MudSwitch @bind-Checked="@currentIdentityResource.Emphasize" Label="Emphasize in consent screen"></MudSwitch>
+
+                    <MudSwitch @bind-Checked="@currentIdentityResource.ShowInDiscoveryDocument" Label="Show in discovery document"></MudSwitch>
+
                 </MudTabPanel>
                 <MudTabPanel Text="User Claims">
-                    <fieldset>
-                        <div class="form-group" style="margin-top:16px;">
-                            <div class="form-group">
-                                <MudTextField @bind-Value="@currentIdentityResource.CustomUserClaimsText" Label="Custom User Claims" Lines="5" FullWidth="true" Required="false"></MudTextField>
-                            </div>
-                        </div>
-                    </fieldset>
+
+                    <MudTextField @bind-Value="@currentIdentityResource.CustomUserClaimsText" Label="Custom User Claims" Lines="5" FullWidth="true" Required="false"></MudTextField>
+
                     <MudDivider />
                     <h3 class="mat-subtitle1">Jwt Claims</h3>
                     <MudTable Items="@jwtClaimSelections">
