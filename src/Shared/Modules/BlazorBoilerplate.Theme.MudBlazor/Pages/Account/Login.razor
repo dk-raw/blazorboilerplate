@@ -18,7 +18,7 @@
         {
             @if (loginViewModel.EnableLocalLogin)
             {
-                <MudCard Elevation="25">
+                <MudCard Elevation="2" Class="pa-4">
                     <MudCardHeader>
                         <CardHeaderContent>
                             <MudIconButton Icon="@Icons.Filled.Home" Class="ml-auto" Link="/" />
@@ -40,25 +40,25 @@
                             @if (loginViewModel.AllowRememberLogin)
                             {<MudCheckBox @bind-Checked="@loginViewModel.RememberMe" Class="ml-n2">@L["Keep me logged in"]</MudCheckBox> <br />}
 
-                            <MudButton ButtonType="ButtonType.Submit" tabindex="3" Variant="Variant.Filled" Color="Color.Primary" Class="float-right">@L["Login"]</MudButton>
+                            <MudButton ButtonType="ButtonType.Submit" tabindex="3" Variant="Variant.Filled" Color="Color.Primary" Style="float:right">@L["Login"]</MudButton>
                         </EditForm>
                     </MudCardContent>
                     <MudCardActions>
                         <MudButton OnClick="@Register" Variant="Variant.Filled" Color="Color.Primary" Class="mr-auto">@L["Sign up"]</MudButton>
                     </MudCardActions>
                 </MudCard>
-                <MudExpansionPanels>
+                <MudExpansionPanels Elevation="2" Class="my-4">
                     <MudExpansionPanel @bind-Expanded="@forgotPasswordToggle">
                         <TitleContent>
                             @L["Forgot your password?"]
                         </TitleContent>
                         <ChildContent>
-                            <EditForm Model="@forgotPasswordViewModel" OnValidSubmit="@ForgotPassword">
+                            <EditForm class="pa-4" Model="@forgotPasswordViewModel" OnValidSubmit="@ForgotPassword">
                                 <FluentValidationValidator />
                                 <ValidationSummary />
-                                    <MudTextField @bind-Value="@forgotPasswordViewModel.Email" Label=@L["Email"] AdornmentIcon="@Icons.Material.Outlined.Mail" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
-                              
-                                    <MudButton Class="ml-auto" ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Submit"]</MudButton>
+                                <MudTextField @bind-Value="@forgotPasswordViewModel.Email" Label=@L["Email"] AdornmentIcon="@Icons.Material.Outlined.Mail" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+
+                                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="my-4" Style="float: right">@L["Submit"]</MudButton>
                             </EditForm>
                         </ChildContent>
                     </MudExpansionPanel>
@@ -67,7 +67,7 @@
             @if (loginViewModel.VisibleExternalProviders.Any())
             {
                 <br />
-                <MudCard>
+                <MudCard Elevation="2">
                     <MudCardHeader>
                         <CardHeaderContent>
                             @if (!loginViewModel.EnableLocalLogin)

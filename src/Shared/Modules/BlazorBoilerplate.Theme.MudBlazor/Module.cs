@@ -14,6 +14,7 @@ namespace BlazorBoilerplate.Theme.Material
     public class Module : IModule, ITheme
     {
         public static readonly string ContentPath = $"_content/{typeof(Module).Namespace.Replace("Material", "MudBlazor")}";
+        public static readonly string Path = typeof(Module).Namespace.Replace("Material", "MudBlazor");
         public Module()
         {
             RootComponentMapping = new RootComponentMapping(typeof(App), "app");
