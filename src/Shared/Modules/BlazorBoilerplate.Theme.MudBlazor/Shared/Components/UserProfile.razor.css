@@ -1,8 +1,7 @@
 ﻿.drawer-profile {
+    clip-path: inset(0);
     padding: 16px;
     border-bottom: solid 1px #777;
-    background-image: url("./images/profile-bg.jpg");
-    background-size: cover;
     color: #fff;
     font-size: 12px;
 }

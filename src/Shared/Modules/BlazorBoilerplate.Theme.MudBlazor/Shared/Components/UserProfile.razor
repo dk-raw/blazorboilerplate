@@ -5,6 +5,10 @@
 <AuthorizeView>
     <Authorized>
         <div class="drawer-profile">
+            <div class="triangle-container">
+                <div class="triangles">
+                </div>
+            </div>
             <MudIconButton Icon="@Icons.Filled.AccountCircle" Link="/account/profile" />
             @if (userViewModel == null)
             {
@@ -13,16 +17,27 @@
             else
             {
                 <span><b><a href="/account/profile">@userViewModel.UserName</a></b></span>
+                <Login />
             }
         </div>
     </Authorized>
+    <NotAuthorized>
+        <div class="drawer-profile">
+            <div class="triangle-container">
+                <div class="triangles">
+                </div>
+            </div>
+            <Login ShowLogInLabel="true" />
+        </div>
+    </NotAuthorized>
 </AuthorizeView>
 
 @code {
-    public bool IsLoggedIn = false;
-    UserViewModel userViewModel = null;
+
     [CascadingParameter]
     Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    UserViewModel userViewModel;
 
     protected override async Task OnParametersSetAsync()
     {
@@ -30,8 +45,6 @@
         var user = (await authenticationStateTask).User;
 
         if (user.Identity.IsAuthenticated)
-        {
             userViewModel = await ((IdentityAuthenticationStateProvider)authStateProvider).GetUserViewModel();
-        }
     }
 }
