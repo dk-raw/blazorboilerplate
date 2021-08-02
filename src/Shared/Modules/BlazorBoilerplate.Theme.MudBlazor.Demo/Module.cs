@@ -1,6 +1,8 @@
 ﻿using BlazorBoilerplate.Shared.Interfaces;
 using BlazorBoilerplate.Shared.Models;
 using BlazorBoilerplate.Theme.Material.Demo.Shared.Components;
+using BlazorBoilerplate.Theme.Material.Demo.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorBoilerplate.Theme.Material.Demo
@@ -21,6 +23,7 @@ namespace BlazorBoilerplate.Theme.Material.Demo
 
         public override void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ITagHelperComponent, ThemeTagHelperComponent>();
             Init(services);
         }
 
