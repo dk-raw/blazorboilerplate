@@ -8,8 +8,6 @@ namespace BlazorBoilerplate.Theme.Material.TagHelpers
     {
         public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            var path = typeof(Module).Namespace.Replace("Material", "MudBlazor");
-
             if (string.Equals(context.TagName, "app",
                     StringComparison.OrdinalIgnoreCase) &&
                 output.Attributes.ContainsName("wasm"))
@@ -20,7 +18,7 @@ namespace BlazorBoilerplate.Theme.Material.TagHelpers
  </div>
 </div>
 <div class=""loading-container"">
- <img src=""_content/{path}/images/logo.svg"" alt=""Loading"" title=""Loading BlazorBoilerplate"" /><br />
+ <img src=""{Module.ContentPath}/images/logo.svg"" alt=""Loading"" title=""Loading BlazorBoilerplate"" /><br />
   Loading BlazorBoilerplate WebAssemblies ...
 </div>");
             }

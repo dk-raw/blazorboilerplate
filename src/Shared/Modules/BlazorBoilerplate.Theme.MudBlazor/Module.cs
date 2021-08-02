@@ -13,6 +13,7 @@ namespace BlazorBoilerplate.Theme.Material
 {
     public class Module : IModule, ITheme
     {
+        public static readonly string ContentPath = $"_content/{typeof(Module).Namespace.Replace("Material", "MudBlazor")}";
         public Module()
         {
             RootComponentMapping = new RootComponentMapping(typeof(App), "app");
@@ -67,7 +68,7 @@ namespace BlazorBoilerplate.Theme.Material
             services.AddScoped<IViewNotifier, ViewNotifier>();
 
             var sp = services.BuildServiceProvider();
-            
+
             sp.GetRequiredService<HttpClient>().EnableIntercept(sp);
         }
 
