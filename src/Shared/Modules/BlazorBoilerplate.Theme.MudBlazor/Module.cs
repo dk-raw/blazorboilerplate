@@ -38,7 +38,7 @@ namespace BlazorBoilerplate.Theme.Material
                 config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
 
                 config.SnackbarConfiguration.PreventDuplicates = true;
-                config.SnackbarConfiguration.NewestOnTop = false;
+                config.SnackbarConfiguration.NewestOnTop = true;
                 config.SnackbarConfiguration.ShowCloseIcon = true;
                 config.SnackbarConfiguration.VisibleStateDuration = 10000;
                 config.SnackbarConfiguration.HideTransitionDuration = 500;
