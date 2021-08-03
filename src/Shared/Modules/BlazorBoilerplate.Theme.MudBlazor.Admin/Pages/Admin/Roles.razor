@@ -28,8 +28,8 @@ else
         </HeaderContent>
         <RowTemplate Context="RoleRow">
             <MudTd>
-                <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenUpsertRoleDialog(@RoleRow.Name))" Disabled="@(RoleRow.Name == BlazorBoilerplate.Constants.DefaultRoleNames.Administrator)"></MudIconButton>
-                <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteDialog(@RoleRow.Name))" Disabled="@(RoleRow.Name == BlazorBoilerplate.Constants.DefaultRoleNames.Administrator)"></MudIconButton>
+                <MudIconButton Icon="@Icons.Filled.Edit" OnClick="@(() => OpenUpsertRoleDialog(@RoleRow.Name))" Disabled="@(RoleRow.Name == BlazorBoilerplate.Constants.DefaultRoleNames.Administrator)" />
+                <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@(() => OpenDeleteDialog(@RoleRow.Name))" Disabled="@(RoleRow.Name == BlazorBoilerplate.Constants.DefaultRoleNames.Administrator)" />
             </MudTd>
             <MudTd><div style="width:130px;">@RoleRow.Name</div></MudTd>
             <MudTd>
@@ -51,7 +51,7 @@ else
     <DialogContent>
         <MudTextField @bind-Value="@currentRoleName" Disabled="@isCurrentRoleReadOnly" Label="Role Name" AdornmentIcon="@Icons.Filled.Add" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
-        <MudTable Items="@permissionsSelections">
+        <MudTable Items="@permissionsSelections" Class="mt-4">
             <HeaderContent>
                 <MudTh>@L["Permissions"]</MudTh>
                 <MudTh>@L["Allow"]</MudTh>
@@ -60,22 +60,30 @@ else
                 <MudTd>@context.DisplayValue</MudTd>
                 <MudTd><MudCheckBox @bind-Checked="@context.Selected"></MudCheckBox></MudTd>
             </RowTemplate>
+            <PagerContent>
+                <MudTablePager />
+            </PagerContent>
         </MudTable>
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { isUpsertRoleDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@UpsertRole">@labelUpsertDialogOkButton</MudButton>
+        <MudButton OnClick="@UpsertRole" Variant="Variant.Filled" Color="Color.Primary">@labelUpsertDialogOkButton</MudButton>
     </DialogActions>
 </MudDialog>
 
 <MudDialog @bind-IsVisible="@isDeleteRoleDialogOpen" Style="z-index:100">
-    <TitleContent><MudIcon Icon="@Icons.Filled.Warning"></MudIcon> @L["Confirm Delete"]</TitleContent>
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@Icons.Material.Filled.DeleteForever" Class="mr-3 mb-n1" />
+            @L["Confirm Delete"]
+        </MudText>
+    </TitleContent>
     <DialogContent>
         @L["Are you sure you want to delete {0}?", currentRoleName]
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { isDeleteRoleDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@DeleteRoleAsync">@L["Delete"]</MudButton>
+        <MudButton OnClick="@DeleteRoleAsync" Variant="Variant.Filled" Color="Color.Error">@L["Delete"]</MudButton>
     </DialogActions>
 </MudDialog>
 

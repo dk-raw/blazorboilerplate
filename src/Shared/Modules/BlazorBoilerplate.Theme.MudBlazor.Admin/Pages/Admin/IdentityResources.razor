@@ -111,13 +111,18 @@ else
 </MudDialog>
 
 <MudDialog @bind-IsVisible="@isDeleteIdentityResourceDialogOpen" Style="z-index:100">
-    <TitleContent><MudIcon Icon="@Icons.Filled.Warning"></MudIcon> @L["Confirm Delete"]</TitleContent>
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@Icons.Material.Filled.DeleteForever" Class="mr-3 mb-n1" />
+            @L["Confirm Delete"]
+        </MudText>
+    </TitleContent>
     <DialogContent>
         @L["Are you sure you want to delete {0}?", currentIdentityResource.Name]
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { isDeleteIdentityResourceDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@DeleteIdentityResourceAsync">@L["Delete"]</MudButton>
+        <MudButton OnClick="@DeleteIdentityResourceAsync" Variant="Variant.Filled" Color="Color.Error">@L["Delete"]</MudButton>
     </DialogActions>
 </MudDialog>
 

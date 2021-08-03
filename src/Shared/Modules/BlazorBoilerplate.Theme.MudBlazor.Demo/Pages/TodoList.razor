@@ -142,13 +142,18 @@
     </MudDialog>
 
     <MudDialog @bind-IsVisible="@deleteDialogOpen" Style="z-index:100">
-        <TitleContent><MudIcon Icon="@Icons.Filled.Warning"></MudIcon> @L["Confirm Delete"]</TitleContent>
+        <TitleContent>
+            <MudText Typo="Typo.h6">
+                <MudIcon Icon="@Icons.Material.Filled.DeleteForever" Class="mr-3 mb-n1" />
+                @L["Confirm Delete"]
+            </MudText>
+        </TitleContent>
         <DialogContent>
             @L["Are you sure you want to delete {0}?", currentTodo.Title]
         </DialogContent>
         <DialogActions>
             <MudButton OnClick="@(e => { deleteDialogOpen = false; })">@L["Cancel"]</MudButton>
-            <MudButton OnClick="@Delete">@L["Delete"]</MudButton>
+            <MudButton OnClick="@Delete" Variant="Variant.Filled" Color="Color.Error">@L["Delete"]</MudButton>
         </DialogActions>
     </MudDialog>
 }

@@ -102,13 +102,18 @@ else
 </MudDialog>
 
 <MudDialog @bind-IsVisible="@deleteUserDialogOpen" Style="z-index:100">
-    <TitleContent><MudIcon Icon="@Icons.Filled.Warning"></MudIcon> @L["Confirm Delete"]</TitleContent>
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@Icons.Material.Filled.DeleteForever" Class="mr-3 mb-n1" />
+            @L["Confirm Delete"]
+        </MudText>
+    </TitleContent>
     <DialogContent>
         @L["Are you sure you want to delete {0}?", currentUser.UserName]
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { deleteUserDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@DeleteUserAsync">@L["Delete"]</MudButton>
+        <MudButton OnClick="@DeleteUserAsync" Variant="Variant.Filled" Color="Color.Error">@L["Delete"]</MudButton>
     </DialogActions>
 </MudDialog>
 

@@ -248,24 +248,34 @@ else
 </MudDialog>
 
 <MudDialog @bind-IsVisible="@isDeleteClientDialogOpen" Style="z-index:100">
-    <TitleContent><MudIcon Icon="@Icons.Filled.Warning"></MudIcon> @L["Confirm Delete"]</TitleContent>
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@Icons.Material.Filled.DeleteForever" Class="mr-3 mb-n1" />
+            @L["Confirm Delete"]
+        </MudText>
+    </TitleContent>
     <DialogContent>
         @L["Are you sure you want to delete {0}?", currentClient.ClientId]
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { isDeleteClientDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@DeleteClientAsync">@L["Delete"]</MudButton>
+        <MudButton OnClick="@DeleteClientAsync" Variant="Variant.Filled" Color="Color.Error">@L["Delete"]</MudButton>
     </DialogActions>
 </MudDialog>
 
 <MudDialog @bind-IsVisible="@isDeleteClientSecretDialogOpen" Style="z-index:100">
-    <TitleContent><MudIcon Icon="@Icons.Filled.Warning"></MudIcon> @L["Confirm Delete"]</TitleContent>
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@Icons.Material.Filled.DeleteForever" Class="mr-3 mb-n1" />
+            @L["Confirm Delete"]
+        </MudText>
+    </TitleContent>
     <DialogContent>
         @L["Are you sure you want to delete {0}?", currentSecret.GetDisplayValue()]
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { isDeleteClientSecretDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@DeleteClientSecret">@L["Delete"]</MudButton>
+        <MudButton OnClick="@DeleteClientSecret" Variant="Variant.Filled" Color="Color.Error">@L["Delete"]</MudButton>
     </DialogActions>
 </MudDialog>
 

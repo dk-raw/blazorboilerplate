@@ -137,24 +137,34 @@ else
 </MudDialog>
 
 <MudDialog @bind-IsVisible="@isDeleteApiResourceDialogOpen" Style="z-index:100">
-    <TitleContent><MudIcon Icon="@Icons.Filled.Warning"></MudIcon> @L["Confirm Delete"]</TitleContent>
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@Icons.Material.Filled.DeleteForever" Class="mr-3 mb-n1" />
+            @L["Confirm Delete"]
+        </MudText>
+    </TitleContent>
     <DialogContent>
         @L["Are you sure you want to delete {0}?", currentApiResource.Name]
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { isDeleteApiResourceDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@DeleteApiResourceAsync">@L["Delete"]</MudButton>
+        <MudButton OnClick="@DeleteApiResourceAsync" Variant="Variant.Filled" Color="Color.Error">@L["Delete"]</MudButton>
     </DialogActions>
 </MudDialog>
 
 <MudDialog @bind-IsVisible="@isDeleteApiResourceSecretDialogOpen" Style="z-index:100">
-    <TitleContent><MudIcon Icon="@Icons.Filled.Warning"></MudIcon> @L["Confirm Delete"]</TitleContent>
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon Icon="@Icons.Material.Filled.DeleteForever" Class="mr-3 mb-n1" />
+            @L["Confirm Delete"]
+        </MudText>
+    </TitleContent>
     <DialogContent>
         @L["Are you sure you want to delete {0}?", currentSecret.GetDisplayValue()]
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { isDeleteApiResourceSecretDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@DeleteApiResourceSecret">@L["Delete"]</MudButton>
+        <MudButton OnClick="@DeleteApiResourceSecret" Variant="Variant.Filled" Color="Color.Error">@L["Delete"]</MudButton>
     </DialogActions>
 </MudDialog>
 
