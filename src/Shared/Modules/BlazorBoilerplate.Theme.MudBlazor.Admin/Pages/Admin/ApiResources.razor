@@ -71,7 +71,7 @@ else
         <EditForm Model="@currentApiResource">
             <FluentValidationValidator />
             <ValidationSummary />
-            <MudTabs>
+            <MudTabs Elevation="4" Rounded="true" Color="@Color.Info">
                 <MudTabPanel Text="Main">
                     <MudTextField @bind-Value="@currentApiResource.Name" Disabled="@isCurrentApiContextIdReadOnly" Label="Id" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
@@ -132,7 +132,7 @@ else
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@CancelChanges">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@UpsertApiResource">@labelUpsertDialogOkButton</MudButton>
+        <MudButton OnClick="@UpsertApiResource" Variant="Variant.Filled" Color="Color.Primary">@labelUpsertDialogOkButton</MudButton>
     </DialogActions>
 </MudDialog>
 
@@ -187,7 +187,7 @@ else
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { isCreateApiResourceSecretDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@CreateSecret">Create API Resource Secret</MudButton>
+        <MudButton OnClick="@CreateSecret" Variant="Variant.Filled" Color="Color.Primary">Create API Resource Secret</MudButton>
     </DialogActions>
 </MudDialog>
 

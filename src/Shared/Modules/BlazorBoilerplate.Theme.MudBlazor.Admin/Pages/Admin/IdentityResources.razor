@@ -67,7 +67,7 @@ else
         <EditForm Model="@currentIdentityResource">
             <FluentValidationValidator />
             <ValidationSummary />
-            <MudTabs>
+            <MudTabs Elevation="4" Rounded="true" Color="@Color.Info">
                 <MudTabPanel Text="Main">
                     <MudTextField @bind-Value="@currentIdentityResource.Name" Disabled="@isCurrentIdentityContextIdReadOnly" Label="Id" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
@@ -106,7 +106,7 @@ else
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@CancelChanges">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@UpsertIdentityResource">@labelUpsertDialogOkButton</MudButton>
+        <MudButton OnClick="@UpsertIdentityResource" Variant="Variant.Filled" Color="Color.Primary">@labelUpsertDialogOkButton</MudButton>
     </DialogActions>
 </MudDialog>
 

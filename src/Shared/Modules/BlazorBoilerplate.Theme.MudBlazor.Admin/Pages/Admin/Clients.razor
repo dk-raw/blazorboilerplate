@@ -76,7 +76,7 @@ else
         <EditForm Model="@currentClient">
             <FluentValidationValidator />
             <ValidationSummary />
-            <MudTabs>
+            <MudTabs Elevation="4" Rounded="true" Color="@Color.Info">
                 <MudTabPanel Text="Main">
                     <MudTextField @bind-Value="@currentClient.ClientId" Disabled="@isCurrentClientKeyReadOnly" Label="Id" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
@@ -243,7 +243,7 @@ else
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@CancelChanges">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@UpsertClient">@labelUpsertDialogOkButton</MudButton>
+        <MudButton OnClick="@UpsertClient" Variant="Variant.Filled" Color="Color.Primary">@labelUpsertDialogOkButton</MudButton>
     </DialogActions>
 </MudDialog>
 
@@ -285,26 +285,21 @@ else
         <EditForm Model="@currentSecret">
             <FluentValidationValidator />
             <ValidationSummary />
-            <fieldset>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@currentSecret.Description" Label="Description" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
-                </div>
-                <div class="form-group">
-                    <MudTextField @bind-Value="@currentSecret.Value" Label="Secret" AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" Required="true"></MudTextField>
-                    <MudIconButton OnClick="@GenerateSecret" Icon="refresh"></MudIconButton>
-                    <MudTooltip Text="You have to copy the secret now, because it cannot be retrieved anymore.">
-                        <MudIconButton Icon="info"></MudIconButton>
-                    </MudTooltip>
-                </div>
-                <div class="form-group">
-                    <MudDatePicker @bind-Date="@currentSecret.Expiration" Label="Expiration" FullWidth="true" Minimum="@DateTime.Now"></MudDatePicker>
-                </div>
-            </fieldset>
+            <MudTextField @bind-Value="@currentSecret.Description" Label="Description" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
+
+            <MudTextField @bind-Value="@currentSecret.Value" Label="Secret" AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" Required="true"></MudTextField>
+            <MudIconButton OnClick="@GenerateSecret" Icon="refresh"></MudIconButton>
+            <MudTooltip Text="You have to copy the secret now, because it cannot be retrieved anymore.">
+                <MudIconButton Icon="info"></MudIconButton>
+            </MudTooltip>
+
+            <MudDatePicker @bind-Date="@currentSecret.Expiration" Label="Expiration" FullWidth="true" Minimum="@DateTime.Now"></MudDatePicker>
+
         </EditForm>
     </DialogContent>
     <DialogActions>
         <MudButton OnClick="@(e => { isCreateClientSecretDialogOpen = false; })">@L["Cancel"]</MudButton>
-        <MudButton OnClick="@CreateSecret">Create Client Secret</MudButton>
+        <MudButton OnClick="@CreateSecret" Variant="Variant.Filled" Color="Color.Primary">Create Client Secret</MudButton>
     </DialogActions>
 </MudDialog>
 
