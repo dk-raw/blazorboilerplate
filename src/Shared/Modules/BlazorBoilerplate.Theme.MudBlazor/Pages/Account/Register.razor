@@ -3,19 +3,20 @@
 
 @layout LoginLayout
 
-<MudCard Elevation="2" Class="pa-4">
-    <MudCardHeader>
-        <CardHeaderContent>
-            <MudIconButton Icon="@Icons.Filled.Home" Class="ml-auto" Link="/" />
-            <div class="logo">
-                <a href="/" title="@appState.AppName Home"><img src=@($"{Module.ContentPath}/images/logo.svg") style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
-                <br />
-            </div>
-            <MudText Typo="Typo.h5" Align="Align.Center">@L["Registration"]</MudText>
-        </CardHeaderContent>
-    </MudCardHeader>
-    <MudCardContent>
-        <EditForm Model="@registerViewModel" OnValidSubmit="@RegisterUser">
+
+<EditForm Model="@registerViewModel" OnValidSubmit="@RegisterUser">
+    <MudCard Elevation="2" Class="pa-4">
+        <MudCardHeader>
+            <CardHeaderContent>
+                <MudIconButton Icon="@Icons.Filled.Home" Class="ml-auto" Link="/" />
+                <div class="logo">
+                    <a href="/" title="@appState.AppName Home"><img src=@($"{Module.ContentPath}/images/logo.svg") style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
+                    <br />
+                </div>
+                <MudText Typo="Typo.h5" Align="Align.Center">@L["Registration"]</MudText>
+            </CardHeaderContent>
+        </MudCardHeader>
+        <MudCardContent>
             <FluentValidationValidator />
             <ValidationSummary />
             <MudTextField @bind-Value="@registerViewModel.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Material.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
@@ -26,15 +27,15 @@
 
             <MudTextField @bind-Value="@registerViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
 
-            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Style="float: right">@L["Register"]</MudButton>
-        </EditForm>
-    </MudCardContent>
-    <MudCardActions>
-        <NavLink href="account/login">
-            <h6 class="font-weight-normal text-center">@L["AlreadyRegistered"]</h6>
-        </NavLink>
-    </MudCardActions>
-</MudCard>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">@L["Register"]</MudButton>
+        </MudCardActions>
+        <MudButton Link="account/login" Color="Color.Primary">
+            @L["AlreadyRegistered"]
+        </MudButton>
+    </MudCard>
+</EditForm>
 
 @code {
 
