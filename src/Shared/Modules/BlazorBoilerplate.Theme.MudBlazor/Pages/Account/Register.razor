@@ -3,40 +3,37 @@
 
 @layout LoginLayout
 
-<MudCard>
-    <div class="hidden-mdc-down">
-        <MudIconButton Icon="@Icons.Filled.Home" Class="float-left" Link="/" />
-    </div>
-    <div class="logo">
-        <img src=@($"{Module.ContentPath}/images/logo.svg") style="width:100px;" /><br />BlazorBoilerplate
-        <br />
-        <h4>@L["Registration"]</h4>
-    </div>
-    <EditForm Model="@registerViewModel" OnValidSubmit="@RegisterUser">
-        <FluentValidationValidator />
-        <ValidationSummary />
-        <fieldset>
-            <div class="form-group">
-                <MudTextField @bind-Value="@registerViewModel.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Material.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+<MudCard Elevation="2" Class="pa-4">
+    <MudCardHeader>
+        <CardHeaderContent>
+            <MudIconButton Icon="@Icons.Filled.Home" Class="ml-auto" Link="/" />
+            <div class="logo">
+                <a href="/" title="@appState.AppName Home"><img src=@($"{Module.ContentPath}/images/logo.svg") style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
+                <br />
             </div>
-            <div class="form-group">
-                <MudTextField @bind-Value="@registerViewModel.Email" Label=@L["Email"] AdornmentIcon="@Icons.Material.Outlined.Mail" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
-            </div>
-            <div class="form-group">
-                <MudTextField @bind-Value="@registerViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
-            </div>
-            <div class="form-group">
-                <MudTextField @bind-Value="@registerViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
-            </div>
-            <div class="form-group d-flex justify-content-end">
-                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Register"]</MudButton>
-            </div>
-            <hr />
-            <NavLink href="account/login">
-                <h6 class="font-weight-normal text-center">@L["AlreadyRegistered"]</h6>
-            </NavLink>
-        </fieldset>
-    </EditForm>
+            <MudText Typo="Typo.h5" Align="Align.Center">@L["Registration"]</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        <EditForm Model="@registerViewModel" OnValidSubmit="@RegisterUser">
+            <FluentValidationValidator />
+            <ValidationSummary />
+            <MudTextField @bind-Value="@registerViewModel.UserName" Label=@L["UserName"] AdornmentIcon="@Icons.Material.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+
+            <MudTextField @bind-Value="@registerViewModel.Email" Label=@L["Email"] AdornmentIcon="@Icons.Material.Outlined.Mail" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+
+            <MudTextField @bind-Value="@registerViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
+
+            <MudTextField @bind-Value="@registerViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
+
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Style="float: right">@L["Register"]</MudButton>
+        </EditForm>
+    </MudCardContent>
+    <MudCardActions>
+        <NavLink href="account/login">
+            <h6 class="font-weight-normal text-center">@L["AlreadyRegistered"]</h6>
+        </NavLink>
+    </MudCardActions>
 </MudCard>
 
 @code {

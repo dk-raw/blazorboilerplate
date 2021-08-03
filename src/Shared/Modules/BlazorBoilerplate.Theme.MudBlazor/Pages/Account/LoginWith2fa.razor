@@ -18,30 +18,30 @@
         }
         else
         {
-            <MudCard>
-                <div class="hidden-mdc-down">
-                    <MudIconButton Icon="@Icons.Filled.Home" Class="float-left" Link="/" />
-                </div>
-                <div class="logo">
-                    <a href="/" title="@appState.AppName Home"><img src=@($"{Module.ContentPath}/images/logo.svg") style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
-                    <br />
-                    <h4>@L["Log in"]</h4>
-                </div>
-                <EditForm Model="@loginViewModel" OnValidSubmit="@SubmitLogin">
-                    <FluentValidationValidator />
-                    <ValidationSummary />
-                    <fieldset>
-                        <div class="form-group">
-                            <MudTextField AutoFocus="true" @bind-Value="@loginViewModel.TwoFactorCode" Label=@L["Code"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password" tabindex="1"></MudTextField>                            
+            <MudCard Elevation="2" Class="pa-4">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudIconButton Icon="@Icons.Filled.Home" Class="ml-auto" Link="/" />
+                        <div class="logo">
+                            <a href="/" title="@appState.AppName Home"><img src=@($"{Module.ContentPath}/images/logo.svg") style="width:100px;" title="@appState.AppName Home" alt="@appState.AppName" /><br />@appState.AppName</a>
+                            <br />
                         </div>
-                        <div class="form-group">
-                            <MudButton class="float-right" ButtonType="ButtonType.Submit" tabindex="2">@L["Login"]</MudButton>
-                            <MudCheckBox @bind-Checked="@loginViewModel.RememberMachine" class="filled-in chk-col-blue">@L["RememberBrowser"]</MudCheckBox>
-                        </div>
-                    </fieldset>
-                </EditForm>
+                        <MudText Typo="Typo.h5" Align="Align.Center">@L["Log in"]</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <EditForm Model="@loginViewModel" OnValidSubmit="@SubmitLogin">
+                        <FluentValidationValidator />
+                        <ValidationSummary />
+                        <MudTextField AutoFocus="true" @bind-Value="@loginViewModel.TwoFactorCode" Label=@L["Code"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password" tabindex="1"></MudTextField>
+
+                        <MudCheckBox @bind-Checked="@loginViewModel.RememberMachine" Class="ml-n2">@L["RememberBrowser"]</MudCheckBox><br />
+
+                        <MudButton ButtonType="ButtonType.Submit" tabindex="2" Variant="Variant.Filled" Color="Color.Primary" Style="float:right">@L["Login"]</MudButton>
+                    </EditForm>
+                </MudCardContent>
             </MudCard>
-            <MudExpansionPanels>
+            <MudExpansionPanels Elevation="2" Class="my-4">
                 <MudExpansionPanel @bind-Expanded="@forgotAuthenticatorToggle">
                     <TitleContent>
                         @L["ForgotAuthenticator"]
@@ -50,12 +50,9 @@
                         <EditForm Model="@forgotAuthenticatorInputModel" OnValidSubmit="@ForgotAuthenticator">
                             <FluentValidationValidator />
                             <ValidationSummary />
-                            <div class="form-group">
-                                <MudTextField @bind-Value="@forgotAuthenticatorInputModel.RecoveryCode" Label=@L["RecoveryCode"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
-                            </div>
-                            <div class="form-group">
-                                <MudButton class="float-right" ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Login"]</MudButton>
-                            </div>
+                            <MudTextField @bind-Value="@forgotAuthenticatorInputModel.RecoveryCode" Label=@L["RecoveryCode"] AdornmentIcon="@Icons.Material.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
+
+                            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="my-4" Style="float: right">@L["Login"]</MudButton>
                         </EditForm>
                     </ChildContent>
                 </MudExpansionPanel>
@@ -64,5 +61,5 @@
     </NotAuthorized>
 </AuthorizeView>
 @code {
-    
+
 }

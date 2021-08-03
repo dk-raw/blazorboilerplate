@@ -34,7 +34,7 @@ else
 
         <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpUsername].Value" Label="@L["UserName"]" AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
-        <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpPassword].Value" Label="@L["Password"]" InputType="InputType.Password" AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+        <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpPassword].Value" Label="@L["Password"]" InputType="InputType.Password" AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
         <MudSwitch @bind-Checked="@settings[SettingKey.EmailConfiguration_SmtpUseSSL].ValueAsBool" Label="SSL"></MudSwitch>
 
@@ -57,7 +57,7 @@ else
 
         <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopUsername].Value" Label="@L["UserName"]" AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
-        <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopPassword].Value" Label="@L["Password"]" InputType="InputType.Password" AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+        <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_PopPassword].Value" Label="@L["Password"]" InputType="InputType.Password" AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
         <MudSwitch @bind-Checked="@settings[SettingKey.EmailConfiguration_PopUseSSL].ValueAsBool" Label="SSL"></MudSwitch>
 
@@ -70,7 +70,7 @@ else
 
         <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapUsername].Value" Label="@L["UserName"]" AdornmentIcon="@Icons.Filled.Person" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
-        <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapPassword].Value" Label="@L["Password"]" InputType="InputType.Password" AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
+        <MudTextField @bind-Value="@settings[SettingKey.EmailConfiguration_ImapPassword].Value" Label="@L["Password"]" InputType="InputType.Password" AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
         <MudSwitch @bind-Checked="@settings[SettingKey.EmailConfiguration_ImapUseSSL].ValueAsBool" Label="SSL"></MudSwitch>
 

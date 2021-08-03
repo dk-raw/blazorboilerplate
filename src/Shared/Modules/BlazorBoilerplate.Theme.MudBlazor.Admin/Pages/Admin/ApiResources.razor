@@ -176,7 +176,7 @@ else
             <ValidationSummary />
             <MudTextField @bind-Value="@currentSecret.Description" Label="Description" AdornmentIcon="@Icons.Filled.Description" Adornment="Adornment.End" FullWidth="true"></MudTextField>
 
-            <MudTextField @bind-Value="@currentSecret.Value" Label="Secret" AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" Required="true"></MudTextField>
+            <MudTextField @bind-Value="@currentSecret.Value" Label="Secret" AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" Required="true"></MudTextField>
             <MudIconButton OnClick="@GenerateSecret" Icon="@Icons.Filled.Refresh"></MudIconButton>
             <MudTooltip Text="You have to copy the secret now, because it cannot be retrieved anymore.">
                 <MudIconButton Icon="@Icons.Filled.Info"></MudIconButton>

@@ -66,9 +66,9 @@ else
 
             <MudTextField @bind-Value="@newUserViewModel.Email" Label=@L["Email"] AdornmentIcon="@Icons.Outlined.Email" Adornment="Adornment.End" FullWidth="true" Required="true" Type="mail"></MudTextField>
 
-            <MudTextField @bind-Value="@newUserViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
+            <MudTextField @bind-Value="@newUserViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
 
-            <MudTextField @bind-Value="@newUserViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
+            <MudTextField @bind-Value="@newUserViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
         </EditForm>
     </DialogContent>
     <DialogActions>
@@ -123,9 +123,9 @@ else
         <EditForm id="changePasswordForm" Model="@changePasswordViewModel" OnValidSubmit="@ResetUserPasswordAsync">
             <FluentValidationValidator />
             <ValidationSummary />
-            <MudTextField @bind-Value="@changePasswordViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
+            <MudTextField @bind-Value="@changePasswordViewModel.Password" Label=@L["Password"] AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
 
-            <MudTextField @bind-Value="@changePasswordViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Filled.LockOutline" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
+            <MudTextField @bind-Value="@changePasswordViewModel.PasswordConfirm" Label=@L["Password Confirmation"] AdornmentIcon="@Icons.Outlined.Lock" Adornment="Adornment.End" FullWidth="true" Required="true" InputType="InputType.Password"></MudTextField>
         </EditForm>
     </DialogContent>
     <DialogActions>
