@@ -7,7 +7,7 @@
 <AuthorizeView Context="AuthorizeContext">
     <Authorized>
         <MudTooltip Text="@L["Logout"]" Placement="Placement.End">
-            <MudButton StartIcon="@Icons.Filled.ExitToApp" Color="Color.Inherit" OnClick="LogoutClick">
+            <MudButton StartIcon="@Icons.Filled.ExitToApp" Color="Color.Inherit" OnClick="LogoutClick" Style="min-width: auto; padding-right:0">
                 @if (ShowLogOutLabel)
                 {@L["Logout"]}
             </MudButton>

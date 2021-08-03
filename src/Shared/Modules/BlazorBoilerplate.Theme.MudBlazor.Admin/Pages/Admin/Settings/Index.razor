@@ -22,7 +22,12 @@ else
     <EditForm Model="@settings">
         <FluentValidationValidator />
         <ValidationSummary />
-        <MudSelect @bind-Value="@settings[SettingKey.MainConfiguration_Runtime].Value" Items="@BlazorRuntimes" Label="@L["Blazor Runtime"]"></MudSelect>
+        <MudSelect @bind-Value="@settings[SettingKey.MainConfiguration_Runtime].Value" Label="@L["Blazor Runtime"]">
+            @foreach (var item in BlazorRuntimes)
+                {
+                <MudSelectItem Value="@item">@item</MudSelectItem>
+                }
+        </MudSelect>
 
     </EditForm>
 

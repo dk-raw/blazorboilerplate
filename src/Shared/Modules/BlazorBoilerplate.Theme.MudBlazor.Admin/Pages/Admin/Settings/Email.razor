@@ -40,7 +40,12 @@ else
 
         @if (@settings[SettingKey.EmailConfiguration_SmtpUseSSL].ValueAsBool)
         {
-            <MudSelect @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpSslProtocol].Value" Items="@sslProtocols" Label="SSL Protocol"></MudSelect>
+            <MudSelect @bind-Value="@settings[SettingKey.EmailConfiguration_SmtpSslProtocol].Value" Label="SSL Protocol">
+                @foreach (var item in sslProtocols)
+                        {
+                    <MudSelectItem Value="@item">@item</MudSelectItem>
+                        }
+            </MudSelect>
         }
         <MudDivider />
         <h5>@L["IncomingEmail"]</h5>

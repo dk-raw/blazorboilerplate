@@ -35,7 +35,12 @@ else
     {<EditForm Model="@newPluralFormRule" OnValidSubmit="@SaveNewPluralFormRule">
             <FluentValidationValidator />
             <ValidationSummary />
-            <MudSelect @bind-Value="@newPluralFormRule.Language" Items="@LocalizationCultures" Label=@L["Culture"]></MudSelect>
+            <MudSelect @bind-Value="@newPluralFormRule.Language" Label=@L["Culture"]>
+                @foreach (var item in LocalizationCultures)
+                {
+                    <MudSelectItem Value="@item">@item</MudSelectItem>
+                }
+            </MudSelect>
             <MudTextField @bind-Value="@newPluralFormRule.Count" Label=@L["Count"] FullWidth="true" Required="true"></MudTextField>
             <MudTextField @bind-Value="@newPluralFormRule.Selector" Label=@L["Selector"] FullWidth="true" Required="true"></MudTextField>
             <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Add"]</MudButton>

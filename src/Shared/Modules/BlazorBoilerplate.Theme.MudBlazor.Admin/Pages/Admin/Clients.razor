@@ -182,13 +182,28 @@ else
 
                     <MudTextField @bind-Value="@currentClient.SlidingRefreshTokenLifetime" Label="Sliding lifetime of a refresh token in seconds" AdornmentIcon="@Icons.Filled.Timer" Adornment="Adornment.End" FullWidth="true" Required="true"></MudTextField>
 
-                    <MudSelect @bind-Value="@currentClient.RefreshTokenUsage" Items="@TokenUsages" Label="Refresh Token Usage"></MudSelect>
+                    <MudSelect @bind-Value="@currentClient.RefreshTokenUsage" Label="Refresh Token Usage">
+                        @foreach (var item in TokenUsages)
+                        {
+                            <MudSelectItem Value="@item">@item</MudSelectItem>
+                        }
+                    </MudSelect>
 
-                    <MudSelect @bind-Value="@currentClient.RefreshTokenExpiration" Items="@RefreshTokenExpirations" Label="Refresh Token Expiration"></MudSelect>
+                    <MudSelect @bind-Value="@currentClient.RefreshTokenExpiration" Label="Refresh Token Expiration">
+                        @foreach (var item in RefreshTokenExpirations)
+                        {
+                            <MudSelectItem Value="@item">@item</MudSelectItem>
+                        }
+                    </MudSelect>
 
                     <MudSwitch @bind-Checked="@currentClient.UpdateAccessTokenClaimsOnRefresh" Label="Update Access Token Claims on refresh"></MudSwitch>
 
-                    <MudSelect @bind-Value="@currentClient.AccessTokenType" Items="@AccessTokenTypes" Label="Access Token Type"></MudSelect>
+                    <MudSelect @bind-Value="@currentClient.AccessTokenType" Label="Access Token Type">
+                        @foreach (var item in AccessTokenTypes)
+                        {
+                            <MudSelectItem Value="@item">@item</MudSelectItem>
+                        }
+                    </MudSelect>
 
                     <MudSwitch @bind-Checked="@currentClient.IncludeJwtId" Label="Include Jwt Id"></MudSwitch>
 

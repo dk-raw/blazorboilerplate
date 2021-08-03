@@ -72,7 +72,12 @@ else
     {<EditForm Model="@newLocalizationRecord" OnValidSubmit="@SaveNewLocalizationRecord">
             <FluentValidationValidator />
             <ValidationSummary />
-            <MudSelect @bind-Value="@newLocalizationRecord.Culture" Items="@LocalizationCultures" Label=@L["Culture"]></MudSelect>
+            <MudSelect @bind-Value="@newLocalizationRecord.Culture" Label=@L["Culture"]>
+                @foreach (var item in LocalizationCultures)
+                        {
+                    <MudSelectItem Value="@item">@item</MudSelectItem>
+                        }
+            </MudSelect>
             <MudTextField @bind-Value="@newLocalizationRecord.Translation" Label=@L["Translation"] FullWidth="true" Lines="5" Style="resize: both"></MudTextField>
             <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@L["Add"]</MudButton>
             <MudButton OnClick="@(() => OpenEditAsHtmlDialog(newLocalizationRecord))" Variant="Variant.Filled" Color="Color.Primary">@L["Edit as HTML"]</MudButton>
