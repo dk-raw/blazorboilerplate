@@ -2,18 +2,14 @@
 @using Microsoft.AspNetCore.Components.Forms
 
 <EditForm Model="@messageDto" OnValidSubmit="@DeleteMessage">
-    <MudListItem>
-        @messageDto.UserName
+    
+    <MudText Typo="Typo.h6">@messageDto.UserName</MudText>
 
-        @messageDto.Text
-        <MudIconButton Icon="@Icons.Filled.Delete"
-                       ButtonType="ButtonType.Submit"
-                       Variant="Variant.Filled" Color="Color.Primary"
-                       Style="float: right;">
-        </MudIconButton>
-    </MudListItem>
-    <MudDivider />
+    @messageDto.Text
+
+    <MudIconButton Icon="@Icons.Filled.Delete" ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Style="float: right;" />
 </EditForm>
+<MudDivider />
 
 @code
 {
@@ -23,11 +19,11 @@
     public Func<MessageDto, Task> Delete { get; set; }
 
     [Parameter]
-    public MessageDto message { get; set; }
+    public MessageDto Message { get; set; }
 
     protected override void OnParametersSet()
     {
-        messageDto = message;
+        messageDto = Message;
     }
 
     async Task DeleteMessage()

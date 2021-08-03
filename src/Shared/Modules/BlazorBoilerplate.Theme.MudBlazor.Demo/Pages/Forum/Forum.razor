@@ -2,21 +2,20 @@
 @inherits ForumPageModel
 @inject IStringLocalizer<Global> L
 
-
 <PageTitle>Forum</PageTitle>
-<p>This forum page uses SignalR and persists in a database.</p>
 
+<p class="my-4">This forum page uses SignalR and persists in a database.</p>
 
 <AuthorizeView Context="AuthorizeContext">
     <NotAuthorized>
-        <div class="alert alert-success">
+        <MudAlert Severity="Severity.Warning">
             <a href="@BlazorBoilerplate.Constants.Settings.LoginPath">Log in</a> to post a message.
-        </div>
+        </MudAlert>
     </NotAuthorized>
     <Authorized>
         <ForumMessageCreateForm Send="Send" />
 
-        <MudList SingleSelection="true" TwoLine="true">
+        <MudList Clickable="true">
             @if (Messages == null || Messages.Count == 0)
             {
                 <MudListItem>
@@ -27,7 +26,9 @@
             {
                 @foreach (var message in Messages)
                 {
-                    <ForumMessage Delete="Delete" Message="@message" />
+                    <MudListItem>
+                        <ForumMessage Delete="Delete" Message="@message" />
+                    </MudListItem>
                 }
             }
         </MudList>

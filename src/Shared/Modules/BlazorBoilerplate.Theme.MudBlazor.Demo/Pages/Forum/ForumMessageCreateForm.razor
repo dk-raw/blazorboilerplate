@@ -1,23 +1,23 @@
 ﻿@using BlazorBoilerplate.Shared.Dto.Sample
 @using Microsoft.AspNetCore.Components.Forms
 
-<EditForm OnValidSubmit="CreateMessage" Model="@messageDto" >
-    <div class="card-footer">
-            @if (Creating)
-            {
-                <MudButton FullWidth="true">
-                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Creating...
-                </MudButton>
-            }
-            else
-            {                
-                <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
-                    <MudTextField @bind-Value="@messageDto.Text" />
-                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Send</MudButton>
-                </MudButtonGroup>
-            }
-    </div>
-</EditForm>
+@if (Creating)
+{
+    <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+}
+else
+{
+    <EditForm OnValidSubmit="CreateMessage" Model="@messageDto">
+        <MudCard>
+            <MudCardContent>
+                <MudTextField FullWidth="true" Placeholder="Type your message" @bind-Value="@messageDto.Text" />
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Color="Color.Primary" Variant="Variant.Filled" Style="float: right">Send</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </EditForm>
+}
 
 @code
 {
