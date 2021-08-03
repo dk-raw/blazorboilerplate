@@ -26,7 +26,7 @@ else
 {
     <MudGrid Class="my-4">
         <MudItem xs="12" sm="4" md="2">
-            <MudSelect Value="DebugLevel" ValueChanged="(string i) => OnFilter(i)">
+            <MudSelect Value="DebugLevel" ValueChanged="(string i) => OnFilter(i)" Clearable="true">
                 @foreach (var item in DebugLevels)
                 {
                     <MudSelectItem Value="@item">@item</MudSelectItem>
