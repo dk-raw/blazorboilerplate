@@ -2,6 +2,7 @@
 }
 
 .login-body {
+    min-width: 400px;
 }
 
     .login-body ::deep.mud-expansion-panels .mud-expand-panel-header {

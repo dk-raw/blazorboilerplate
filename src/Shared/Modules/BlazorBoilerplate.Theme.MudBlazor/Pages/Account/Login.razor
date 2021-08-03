@@ -81,7 +81,7 @@
                             <MudText Typo="Typo.h5" Align="Align.Center">@L["Sign in with"]</MudText>
                         </CardHeaderContent>
                     </MudCardHeader>
-                    <MudCardContent Class="d-flex flex-column">
+                    <MudCardContent Class="d-flex align-center flex-column">
                         @foreach (var provider in loginViewModel.VisibleExternalProviders)
                         {
                             @switch (provider.AuthenticationScheme)

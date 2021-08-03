@@ -110,6 +110,7 @@ hr {
     margin: 8px;
     padding: 8px;
     height: 40px;
+    min-width: 140px;
 }
 
 .validation-message {
