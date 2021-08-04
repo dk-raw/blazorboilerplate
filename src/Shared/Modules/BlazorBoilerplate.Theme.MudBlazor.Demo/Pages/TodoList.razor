@@ -10,7 +10,7 @@
 </TopSection>
 
 <PageTitle>Todo List - CRUD</PageTitle>
-<p>
+<p class="my-4">
     This Todo List demonstrates fetching data from the server and CRUD for Blazor with <a href="http://breeze.github.io" target="_blank">Breeze</a> to make API design easy.
     <br />Check out the <a href="https://github.com/enkodellc/blazorboilerplate" target="_blank">repository to view the source.</a>
     <br />If you find this helpful please contribute or <DonateButton /> to support further development.
@@ -18,9 +18,9 @@
 </p>
 
 
-<EditForm Model="filter">
-    <div class="d-flex align-items-center">
-        <MudDatePicker Disabled="@busy" @bind-Date="filter.From" Label=@L["From"] @ref="_fromDatePicker">
+<MudGrid>
+    <MudItem xs="12" sm="6" Class="d-flex align-items-center">
+        <MudDatePicker Disabled="@busy" @bind-Date="filter.From" Label=@L["From"] Class="mr-2" @ref="_fromDatePicker">
             <PickerActions>
                 <MudButton Class="mr-auto align-self-start" OnClick="@(() => { _fromDatePicker.Clear(); _fromTimePicker.Clear(); })">@L["Cancel"]</MudButton>
                 <MudButton OnClick="@(() => _fromDatePicker.Close(false))">@L["Close"]</MudButton>
@@ -34,7 +34,9 @@
                 <MudButton Color="Color.Primary" OnClick="@(() => _fromTimePicker.Close())">Ok</MudButton>
             </PickerActions>
         </MudTimePicker>
-        <MudDatePicker Disabled="@busy" @bind-Date="filter.To" Label=@L["To"] @ref="_toDatePicker">
+    </MudItem>
+    <MudItem xs="12" sm="6" Class="d-flex align-items-center">
+        <MudDatePicker Disabled="@busy" @bind-Date="filter.To" Label=@L["To"] Class="mr-2" @ref="_toDatePicker">
             <PickerActions>
                 <MudButton Class="mr-auto align-self-start" OnClick="@(() => { _toDatePicker.Clear(); _toTimePicker.Clear(); })">@L["Cancel"]</MudButton>
                 <MudButton OnClick="@(() => _toDatePicker.Close(false))">@L["Close"]</MudButton>
@@ -48,8 +50,9 @@
                 <MudButton Color="Color.Primary" OnClick="@(() => _toTimePicker.Close())">Ok</MudButton>
             </PickerActions>
         </MudTimePicker>
-    </div>
-</EditForm>
+    </MudItem>
+</MudGrid>
+
 <MudGrid>
     <MudItem xs="6" sm="3">
         <MudSelect Disabled="@busy" @bind-Value="@filter.CreatedById" FullWidth="true" Label="Creators">
@@ -81,8 +84,8 @@
         <div style="margin: 20px; font-weight: bold; font-size: 18px">Total item Count: @itemCount - Start index: @startIndex - Page size: @pageSize</div>
     }
 #else
-    {
-    <div style="margin: 20px; font-weight: bold; font-size: 18px">Total item Count: @itemCount</div>
+{
+<div style="margin: 20px; font-weight: bold; font-size: 18px">Total item Count: @itemCount</div>
     }
 #endif
 }
